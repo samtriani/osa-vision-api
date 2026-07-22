@@ -12,6 +12,9 @@ class Settings(BaseSettings):
 
     cors_origins: list[str] = ["http://localhost:4200"]
 
+    groq_api_key: str = ""
+    groq_vision_model: str = "qwen/qwen3.6-27b"
+
 
 settings = Settings()
 
