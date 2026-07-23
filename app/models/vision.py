@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-EstadoPosicion = Literal["vacio", "parcial"]
+EstadoPosicion = Literal["vacio", "parcial", "surtido_incorrecto"]
 
 
 class HuecoDetectado(BaseModel):
