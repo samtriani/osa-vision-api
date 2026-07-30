@@ -1,5 +1,7 @@
 import base64
 import json
+import logging
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -12,9 +14,25 @@ from app.models.vision import (
     AnalizarConReferenciaResponse,
     AnalizarImagenResponse,
     CategoriaVisual,
+    EstadoPosicion,
     HuecoDetectado,
     HuecoVisual,
 )
+
+logger = logging.getLogger("osa_vision.vision")
+
+
+def _normalizar_estado(valor: Any) -> EstadoPosicion:
+    """El modelo no siempre repite el literal exacto que pide el prompt (acentos,
+    variantes en texto libre); se normaliza por palabra clave en vez de dejar
+    que pydantic reviente con un ValidationError por un typo del LLM."""
+    texto = str(valor or "").lower()
+    if "parcial" in texto:
+        return "parcial"
+    if "incorrect" in texto or "surtido" in texto or "equivocad" in texto:
+        return "surtido_incorrecto"
+    return "vacio"
+
 
 _SYSTEM_PROMPT_TEMPLATE = """Eres un asistente experto en auditoría de anaquel (on-shelf \
 availability) para tiendas de autoservicio. Vas a comparar una foto de anaquel contra su \
@@ -24,8 +42,17 @@ mal surtidas.
 Planograma de la sección "{nombre}":
 {posiciones}
 
-Para cada posición de la lista de arriba, revisa en la foto si el producto está presente \
-en la cantidad esperada. Reporta solo las posiciones vacías o parciales.
+Para cada posición de la lista de arriba, revisa en la foto si el producto correcto está \
+presente en la cantidad esperada, y clasifica lo que encuentres en uno de tres estados — \
+no los mezcles, son causas distintas para el operador:
+
+- "vacio": el espacio está físicamente vacío, sin ningún producto.
+- "parcial": el producto/SKU correcto SÍ está, pero con menos piezas visibles que las \
+piezas esperadas indicadas en el planograma.
+- "surtido_incorrecto": el espacio tiene producto (no está vacío), pero es un producto/SKU \
+distinto al que debería ir ahí — no es un hueco físico, es un error de acomodo.
+
+Reporta solo las posiciones que no estén completas y correctas.
 
 Sé conservador: la lista de arriba es larga y algunos productos te van a resultar difíciles \
 de reconocer a simple vista (empaques parecidos, marcas poco comunes) — eso NO significa que \
@@ -50,7 +77,7 @@ Responde ÚNICAMENTE con un JSON con esta forma exacta, sin texto adicional:
       "nivel": 1,
       "columna_aproximada": 1,
       "posicion_id": "id exacto si lo identificas con certeza, si no null",
-      "estado": "vacio o parcial",
+      "estado": "vacio, parcial o surtido_incorrecto",
       "confianza": 0.0
     }}
   ]
@@ -59,13 +86,6 @@ Responde ÚNICAMENTE con un JSON con esta forma exacta, sin texto adicional:
 No inventes ids que no estén en la lista del planograma. "confianza" es un número entre \
 0.0 y 1.0. Si todas las posiciones están completas, responde con "huecos": [].
 """
-
-
-def _normalizar_estado(valor: Any) -> str:
-    """El modelo a veces responde variantes ("vacío" con tilde, "-parcial" con
-    guion, etc.) en vez del literal exacto "vacio"/"parcial" que pide el
-    prompt; se normaliza en vez de que la validación estricta truene."""
-    return "parcial" if "parcial" in str(valor).lower() else "vacio"
 
 
 _STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
@@ -184,13 +204,20 @@ con el anaquel completo tal como debería lucir, organizado en {num_niveles} niv
 2. La segunda imagen es una FOTO REAL del mismo anaquel, tomada en tienda en este momento.
 
 Compara nivel por nivel la foto real contra el planograma de referencia y detecta qué \
-posiciones están vacías o parcialmente vacías (huecos) en la foto real.
+posiciones no coinciden con lo que debería haber, clasificando cada una en uno de tres \
+estados — son causas distintas para el operador, no los mezcles:
 
-Antes de reportar un hueco, verifica: (a) que el nivel que estás mirando en la FOTO es \
-realmente el mismo nivel que en la REFERENCIA — cuenta los niveles de abajo hacia arriba en \
-ambas imágenes, no asumas por la marca; (b) que el espacio está genuinamente vacío o con \
-menos piezas que sus vecinos inmediatos del MISMO nivel, no una diferencia de sabor/color de \
-empaque del mismo producto.
+- "vacio": el espacio está físicamente vacío, sin ningún producto.
+- "parcial": las marcas correctas están presentes, pero con menos piezas que sus vecinos \
+inmediatos del mismo nivel (falta reponer, no falta variedad).
+- "surtido_incorrecto": el nivel está físicamente lleno de producto — NO es un hueco — pero \
+falta alguna de las marcas/sabores que la tabla de distribución dice que debería haber ahí \
+(por ejemplo, el nivel está lleno de una sola marca y le falta otra marca de la lista).
+
+Antes de reportar algo, verifica: (a) que el nivel que estás mirando en la FOTO es realmente \
+el mismo nivel que en la REFERENCIA — cuenta los niveles de abajo hacia arriba en ambas \
+imágenes, no asumas por la marca; (b) si el espacio tiene producto, no lo reportes como \
+"vacio" — usa "surtido_incorrecto" si el problema es que falta variedad de marca, no volumen.
 
 Para "posicion", describe la ubicación contando columnas de productos de izquierda a derecha \
 dentro de ese nivel en la FOTO (ej. "posiciones 4 a 6 de aproximadamente 14"), no por nombre \
@@ -206,7 +233,7 @@ Responde ÚNICAMENTE con un JSON con esta forma exacta, sin texto adicional:
     {{
       "nivel": 1,
       "posicion": "descripción breve de dónde está el hueco dentro del nivel",
-      "estado": "vacio o parcial",
+      "estado": "vacio, parcial o surtido_incorrecto",
       "confianza": 0.0
     }}
   ]
@@ -274,6 +301,10 @@ def analizar_imagen(
         raise
 
     payload: dict[str, Any] = json.loads(completion.choices[0].message.content)
+    logger.info(
+        "vision.analizar_imagen seccion=%s posiciones_planograma=%d huecos_crudos=%d",
+        planograma.seccion_id, len(planograma.posiciones), len(payload.get("huecos", [])),
+    )
     posiciones_por_id = {p.id: p for p in planograma.posiciones}
     posiciones_por_nivel_col = {
         (p.nivel, p.columna): p for p in planograma.posiciones if p.nivel is not None and p.columna is not None
@@ -292,6 +323,10 @@ def analizar_imagen(
         if posicion is None:
             # El modelo alucinó una posición que no existe en el planograma; se
             # descarta en vez de inventar un sku/producto que no podemos respaldar.
+            logger.warning(
+                "vision.analizar_imagen seccion=%s posicion desconocida, descartada: nivel=%r columna=%r posicion_id=%r",
+                planograma.seccion_id, h.get("nivel"), h.get("columna_aproximada"), h.get("posicion_id"),
+            )
             continue
         huecos.append(
             HuecoDetectado(
@@ -300,10 +335,16 @@ def analizar_imagen(
                 sku=posicion.sku,
                 producto=posicion.producto,
                 facings_esperados=posicion.facings_esperados,
-                estado=_normalizar_estado(h.get("estado", "")),
+                estado=_normalizar_estado(h.get("estado")),
                 confianza=h.get("confianza", 0.5),
             )
         )
+
+    conteo = Counter(h.estado for h in huecos)
+    logger.info(
+        "vision.analizar_imagen seccion=%s resultado: %d huecos (%s)",
+        planograma.seccion_id, len(huecos), dict(conteo),
+    )
 
     return AnalizarImagenResponse(
         seccion_id=planograma.seccion_id,
@@ -332,6 +373,7 @@ def analizar_con_referencia(
     """
     referencia = _REFERENCIAS[categoria_id]
     num_niveles = max(referencia.niveles)
+    logger.info("vision.analizar_con_referencia categoria=%s num_niveles=%d", categoria_id, num_niveles)
     system_prompt = _SYSTEM_PROMPT_REFERENCIA.format(
         categoria=referencia.nombre,
         num_niveles=num_niveles,
@@ -358,6 +400,10 @@ def analizar_con_referencia(
     )
 
     payload: dict[str, Any] = json.loads(completion.choices[0].message.content)
+    logger.info(
+        "vision.analizar_con_referencia categoria=%s huecos_crudos=%d",
+        categoria_id, len(payload.get("huecos", [])),
+    )
 
     huecos: list[HuecoVisual] = []
     for i, h in enumerate(payload.get("huecos", []), start=1):
@@ -366,6 +412,10 @@ def analizar_con_referencia(
         if datos_nivel is None:
             # El modelo alucinó un nivel fuera de rango; se descarta en vez de
             # inventar una categoría/marca que no está en la hoja de referencia.
+            logger.warning(
+                "vision.analizar_con_referencia categoria=%s nivel fuera de rango, descartado: %r",
+                categoria_id, nivel,
+            )
             continue
         categoria_esperada, marcas_esperadas = datos_nivel
         huecos.append(
@@ -375,9 +425,15 @@ def analizar_con_referencia(
                 posicion=h.get("posicion", f"Nivel {nivel}"),
                 categoria_esperada=categoria_esperada,
                 marcas_esperadas=marcas_esperadas,
-                estado=_normalizar_estado(h.get("estado", "")),
+                estado=_normalizar_estado(h.get("estado")),
                 confianza=h.get("confianza", 0.5),
             )
         )
+
+    conteo = Counter(h.estado for h in huecos)
+    logger.info(
+        "vision.analizar_con_referencia categoria=%s resultado: %d huecos (%s)",
+        categoria_id, len(huecos), dict(conteo),
+    )
 
     return AnalizarConReferenciaResponse(resumen=payload.get("resumen", ""), huecos=huecos)
