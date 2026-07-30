@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from groq import Groq
+from groq import APIStatusError, Groq
 
 from app.core.config import settings
 from app.models.planograma import Planograma
@@ -27,12 +27,29 @@ Planograma de la sección "{nombre}":
 Para cada posición de la lista de arriba, revisa en la foto si el producto está presente \
 en la cantidad esperada. Reporta solo las posiciones vacías o parciales.
 
+Sé conservador: la lista de arriba es larga y algunos productos te van a resultar difíciles \
+de reconocer a simple vista (empaques parecidos, marcas poco comunes) — eso NO significa que \
+falten. Antes de agregar una posición a "huecos", verifica específicamente en la foto que ESA \
+posición se vea vacía o con menos piezas que sus vecinas del mismo nivel; no la reportes solo \
+porque no reconoces bien el producto o porque "en general" el anaquel se ve algo distinto al \
+planograma. Si la foto muestra el anaquel completo y bien surtido, la respuesta correcta es \
+"huecos": [] — no inventes faltantes para tener algo que reportar.
+
+Para ubicar cada hueco, CUENTA directamente sobre la foto en vez de intentar adivinar un id \
+de la lista: "nivel" es el número de charola contando de abajo hacia arriba (1 = charola \
+inferior), y "columna_aproximada" es la posición contando productos de izquierda a derecha \
+dentro de ese nivel, empezando en 1. Si además puedes identificar con certeza el id exacto \
+de la lista de arriba inclúyelo en "posicion_id"; si no estás seguro, déjalo como null — el \
+nivel/columna es el dato principal.
+
 Responde ÚNICAMENTE con un JSON con esta forma exacta, sin texto adicional:
 {{
   "resumen": "una frase breve describiendo el estado general del anaquel",
   "huecos": [
     {{
-      "posicion_id": "el id EXACTO tal como aparece en el planograma de arriba, ej. 'P3'",
+      "nivel": 1,
+      "columna_aproximada": 1,
+      "posicion_id": "id exacto si lo identificas con certeza, si no null",
       "estado": "vacio o parcial",
       "confianza": 0.0
     }}
@@ -42,6 +59,13 @@ Responde ÚNICAMENTE con un JSON con esta forma exacta, sin texto adicional:
 No inventes ids que no estén en la lista del planograma. "confianza" es un número entre \
 0.0 y 1.0. Si todas las posiciones están completas, responde con "huecos": [].
 """
+
+
+def _normalizar_estado(valor: Any) -> str:
+    """El modelo a veces responde variantes ("vacío" con tilde, "-parcial" con
+    guion, etc.) en vez del literal exacto "vacio"/"parcial" que pide el
+    prompt; se normaliza en vez de que la validación estricta truene."""
+    return "parcial" if "parcial" in str(valor).lower() else "vacio"
 
 
 _STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
@@ -218,37 +242,56 @@ def analizar_imagen(
         nombre=planograma.nombre, posiciones=_prompt_planograma(planograma)
     )
 
-    completion = _client().chat.completions.create(
-        model=settings.groq_vision_model,
-        response_format={"type": "json_object"},
-        # qwen3.6-27b es un modelo "thinking" por defecto: sin esto, gasta el
-        # presupuesto de tokens razonando y el JSON final sale vacío/truncado.
-        reasoning_effort="none",
-        reasoning_format="hidden",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": "Compara esta foto del anaquel contra el planograma y detecta los huecos.",
-                    },
-                    {"type": "image_url", "image_url": {"url": data_url}},
-                ],
-            },
-        ],
-    )
+    try:
+        completion = _client().chat.completions.create(
+            model=settings.groq_vision_model,
+            response_format={"type": "json_object"},
+            # qwen3.6-27b es un modelo "thinking" por defecto: sin esto, gasta el
+            # presupuesto de tokens razonando y el JSON final sale vacío/truncado.
+            reasoning_effort="none",
+            reasoning_format="hidden",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "Compara esta foto del anaquel contra el planograma y detecta los huecos.",
+                        },
+                        {"type": "image_url", "image_url": {"url": data_url}},
+                    ],
+                },
+            ],
+        )
+    except APIStatusError as exc:
+        if exc.status_code in (413, 429):
+            raise RuntimeError(
+                "Esta sección tiene demasiadas posiciones para analizarla en una sola foto "
+                f"(catálogo de {len(planograma.posiciones)} posiciones excede el límite de "
+                "tokens del modelo). Prueba con una sección más chica o un módulo más angosto."
+            ) from exc
+        raise
 
     payload: dict[str, Any] = json.loads(completion.choices[0].message.content)
     posiciones_por_id = {p.id: p for p in planograma.posiciones}
+    posiciones_por_nivel_col = {
+        (p.nivel, p.columna): p for p in planograma.posiciones if p.nivel is not None and p.columna is not None
+    }
 
     huecos: list[HuecoDetectado] = []
     for h in payload.get("huecos", []):
-        posicion = posiciones_por_id.get(h.get("posicion_id"))
+        # Con catálogos grandes (cientos de posiciones) es mucho más confiable
+        # que el modelo cuente nivel/columna sobre la foto a que acierte un id
+        # exacto de memoria — se intenta primero por (nivel, columna) y solo se
+        # cae a posicion_id como respaldo (catálogos chicos tipo demo, sin
+        # nivel/columna, donde sí funciona bien matchear por id).
+        posicion = posiciones_por_nivel_col.get((h.get("nivel"), h.get("columna_aproximada")))
         if posicion is None:
-            # El modelo alucinó un id que no existe en el planograma; se descarta
-            # en vez de inventar un sku/producto que no podemos respaldar.
+            posicion = posiciones_por_id.get(h.get("posicion_id"))
+        if posicion is None:
+            # El modelo alucinó una posición que no existe en el planograma; se
+            # descarta en vez de inventar un sku/producto que no podemos respaldar.
             continue
         huecos.append(
             HuecoDetectado(
@@ -257,7 +300,7 @@ def analizar_imagen(
                 sku=posicion.sku,
                 producto=posicion.producto,
                 facings_esperados=posicion.facings_esperados,
-                estado=h.get("estado", "vacio"),
+                estado=_normalizar_estado(h.get("estado", "")),
                 confianza=h.get("confianza", 0.5),
             )
         )
@@ -325,9 +368,6 @@ def analizar_con_referencia(
             # inventar una categoría/marca que no está en la hoja de referencia.
             continue
         categoria_esperada, marcas_esperadas = datos_nivel
-        # El modelo a veces responde "vacío" (con tilde) en vez del literal exacto
-        # "vacio" que pide el prompt; se normaliza en vez de descartar el hueco.
-        estado = "parcial" if "parcial" in str(h.get("estado", "")).lower() else "vacio"
         huecos.append(
             HuecoVisual(
                 id=f"V-{i:02d}",
@@ -335,7 +375,7 @@ def analizar_con_referencia(
                 posicion=h.get("posicion", f"Nivel {nivel}"),
                 categoria_esperada=categoria_esperada,
                 marcas_esperadas=marcas_esperadas,
-                estado=estado,
+                estado=_normalizar_estado(h.get("estado", "")),
                 confianza=h.get("confianza", 0.5),
             )
         )

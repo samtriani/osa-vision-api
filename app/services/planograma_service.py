@@ -1,4 +1,22 @@
+import json
+from pathlib import Path
+
 from app.models.planograma import Planograma, PosicionPlanograma
+
+# Planogramas reales, digitalizados con app.services.planograma_ingest a partir
+# de los PDF oficiales de planograma (UPC/marca extraídos como texto, no
+# adivinados por un VLM) — ver app/services/planograma_ingest.py.
+_PLANOGRAMAS_REALES_DIR = Path(__file__).resolve().parent.parent / "static" / "planogramas"
+
+
+def _cargar_planogramas_reales() -> dict[str, Planograma]:
+    reales: dict[str, Planograma] = {}
+    if not _PLANOGRAMAS_REALES_DIR.is_dir():
+        return reales
+    for archivo in sorted(_PLANOGRAMAS_REALES_DIR.glob("*.json")):
+        datos = json.loads(archivo.read_text(encoding="utf-8"))
+        reales[datos["seccion_id"]] = Planograma(**datos)
+    return reales
 
 # En memoria, uno por sección (mismas secciones que usa el frontend en las
 # "muestras" de captura). Los SKU de lácteos 4-B coinciden con los huecos
@@ -25,16 +43,8 @@ _PLANOGRAMAS: dict[str, Planograma] = {
             PosicionPlanograma(id="P3", posicion="Charola 2, posición 1", sku="750115-020", producto="Danone Griego 900g", facings_esperados=4),
         ],
     ),
-    "abarrotes-7a": Planograma(
-        seccion_id="abarrotes-7a",
-        nombre="Abarrotes 7-A",
-        posiciones=[
-            PosicionPlanograma(id="P1", posicion="Charola 1, posición 1", sku="720045-011", producto="Aceite 123 900ml", facings_esperados=6),
-            PosicionPlanograma(id="P2", posicion="Charola 2, posición 1", sku="720050-022", producto="Arroz Verde Valle 1kg", facings_esperados=5),
-            PosicionPlanograma(id="P3", posicion="Charola 3, posición 1", sku="720060-033", producto="Frijol La Costeña 900g", facings_esperados=5),
-        ],
-    ),
 }
+_PLANOGRAMAS.update(_cargar_planogramas_reales())
 
 
 def obtener(seccion_id: str) -> Planograma | None:
@@ -43,3 +53,14 @@ def obtener(seccion_id: str) -> Planograma | None:
 
 def listar() -> list[Planograma]:
     return list(_PLANOGRAMAS.values())
+
+
+def cargar_imagen_referencia(seccion_id: str) -> bytes | None:
+    """Foto fotorrealista del propio PDF de planograma (si existe) para esa
+    sección — puramente ilustrativa: la comparación real sigue siendo por
+    catálogo de SKU, esto es solo para que el operador vea de un vistazo cómo
+    debería lucir el anaquel."""
+    archivo = _PLANOGRAMAS_REALES_DIR / f"{seccion_id}.png"
+    if not archivo.is_file():
+        return None
+    return archivo.read_bytes()

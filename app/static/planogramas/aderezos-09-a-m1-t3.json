@@ -1,0 +1,645 @@
+{
+  "seccion_id": "aderezos-09-a-m1-t3",
+  "nombre": "Aderezos 9-A · Tramo 3 de 4",
+  "posiciones": [
+    {
+      "id": "N7-P1",
+      "posicion": "Nivel 7, columna 1",
+      "sku": "608875033941",
+      "producto": "KRAFT",
+      "facings_esperados": 3,
+      "nivel": 7,
+      "columna": 1
+    },
+    {
+      "id": "N7-P2",
+      "posicion": "Nivel 7, columna 2",
+      "sku": "608875001216",
+      "producto": "HEINZ",
+      "facings_esperados": 3,
+      "nivel": 7,
+      "columna": 2
+    },
+    {
+      "id": "N7-P3",
+      "posicion": "Nivel 7, columna 3",
+      "sku": "608875008222",
+      "producto": "HEINZ",
+      "facings_esperados": 6,
+      "nivel": 7,
+      "columna": 3
+    },
+    {
+      "id": "N7-P4",
+      "posicion": "Nivel 7, columna 4",
+      "sku": "7501017056699",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 4
+    },
+    {
+      "id": "N7-P5",
+      "posicion": "Nivel 7, columna 5",
+      "sku": "7501017050215",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 6,
+      "nivel": 7,
+      "columna": 5
+    },
+    {
+      "id": "N7-P6",
+      "posicion": "Nivel 7, columna 6",
+      "sku": "7501017051311",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 5,
+      "nivel": 7,
+      "columna": 6
+    },
+    {
+      "id": "N7-P7",
+      "posicion": "Nivel 7, columna 7",
+      "sku": "8720182768278",
+      "producto": "MAILLE",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 7
+    },
+    {
+      "id": "N7-P8",
+      "posicion": "Nivel 7, columna 8",
+      "sku": "8720182768278",
+      "producto": "MAILLE",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 8
+    },
+    {
+      "id": "N7-P9",
+      "posicion": "Nivel 7, columna 9",
+      "sku": "3036810204014",
+      "producto": "MAILLE",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 9
+    },
+    {
+      "id": "N7-P10",
+      "posicion": "Nivel 7, columna 10",
+      "sku": "3036810204014",
+      "producto": "MAILLE",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 10
+    },
+    {
+      "id": "N7-P11",
+      "posicion": "Nivel 7, columna 11",
+      "sku": "3036810207589",
+      "producto": "MAILLE",
+      "facings_esperados": 6,
+      "nivel": 7,
+      "columna": 11
+    },
+    {
+      "id": "N7-P12",
+      "posicion": "Nivel 7, columna 12",
+      "sku": "3036810207589",
+      "producto": "MAILLE",
+      "facings_esperados": 6,
+      "nivel": 7,
+      "columna": 12
+    },
+    {
+      "id": "N7-P13",
+      "posicion": "Nivel 7, columna 13",
+      "sku": "3036810201280",
+      "producto": "MAILLE",
+      "facings_esperados": 10,
+      "nivel": 7,
+      "columna": 13
+    },
+    {
+      "id": "N7-P14",
+      "posicion": "Nivel 7, columna 14",
+      "sku": "3036810201280",
+      "producto": "MAILLE",
+      "facings_esperados": 10,
+      "nivel": 7,
+      "columna": 14
+    },
+    {
+      "id": "N6-P1",
+      "posicion": "Nivel 6, columna 1",
+      "sku": "608875033910",
+      "producto": "KRAFT",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 1
+    },
+    {
+      "id": "N6-P2",
+      "posicion": "Nivel 6, columna 2",
+      "sku": "608875001186",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 2
+    },
+    {
+      "id": "N6-P3",
+      "posicion": "Nivel 6, columna 3",
+      "sku": "608875008222",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 3
+    },
+    {
+      "id": "N6-P4",
+      "posicion": "Nivel 6, columna 4",
+      "sku": "7501017040506",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 4
+    },
+    {
+      "id": "N6-P5",
+      "posicion": "Nivel 6, columna 5",
+      "sku": "7501017003815",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 5
+    },
+    {
+      "id": "N6-P6",
+      "posicion": "Nivel 6, columna 6",
+      "sku": "7501017043217",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 6
+    },
+    {
+      "id": "N6-P7",
+      "posicion": "Nivel 6, columna 7",
+      "sku": "41500992921",
+      "producto": "FRENCHS",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 7
+    },
+    {
+      "id": "N6-P8",
+      "posicion": "Nivel 6, columna 8",
+      "sku": "41500000787",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 8
+    },
+    {
+      "id": "N6-P9",
+      "posicion": "Nivel 6, columna 9",
+      "sku": "41500000534",
+      "producto": "FRENCHS",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 9
+    },
+    {
+      "id": "N6-P10",
+      "posicion": "Nivel 6, columna 10",
+      "sku": "41500000886",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 10
+    },
+    {
+      "id": "N5-P1",
+      "posicion": "Nivel 5, columna 1",
+      "sku": "608875033958",
+      "producto": "KRAFT",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 1
+    },
+    {
+      "id": "N5-P2",
+      "posicion": "Nivel 5, columna 2",
+      "sku": "608875001186",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 2
+    },
+    {
+      "id": "N5-P3",
+      "posicion": "Nivel 5, columna 3",
+      "sku": "608875008079",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 3
+    },
+    {
+      "id": "N5-P4",
+      "posicion": "Nivel 5, columna 4",
+      "sku": "7506306326750",
+      "producto": "HELLMANNS",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 4
+    },
+    {
+      "id": "N5-P5",
+      "posicion": "Nivel 5, columna 5",
+      "sku": "7501005151955",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 5
+    },
+    {
+      "id": "N5-P6",
+      "posicion": "Nivel 5, columna 6",
+      "sku": "7506306317598",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 6
+    },
+    {
+      "id": "N5-P7",
+      "posicion": "Nivel 5, columna 7",
+      "sku": "41500992921",
+      "producto": "FRENCHS",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 7
+    },
+    {
+      "id": "N5-P8",
+      "posicion": "Nivel 5, columna 8",
+      "sku": "41500000787",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 8
+    },
+    {
+      "id": "N5-P9",
+      "posicion": "Nivel 5, columna 9",
+      "sku": "41500000534",
+      "producto": "FRENCHS",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 9
+    },
+    {
+      "id": "N5-P10",
+      "posicion": "Nivel 5, columna 10",
+      "sku": "41500000886",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 10
+    },
+    {
+      "id": "N5-P11",
+      "posicion": "Nivel 5, columna 11",
+      "sku": "41500989211",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 11
+    },
+    {
+      "id": "N4-P1",
+      "posicion": "Nivel 4, columna 1",
+      "sku": "608875033958",
+      "producto": "KRAFT",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 1
+    },
+    {
+      "id": "N4-P2",
+      "posicion": "Nivel 4, columna 2",
+      "sku": "608875001186",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 2
+    },
+    {
+      "id": "N4-P3",
+      "posicion": "Nivel 4, columna 3",
+      "sku": "608875008079",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 3
+    },
+    {
+      "id": "N4-P4",
+      "posicion": "Nivel 4, columna 4",
+      "sku": "7506306326767",
+      "producto": "HELLMANNS",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 4
+    },
+    {
+      "id": "N4-P5",
+      "posicion": "Nivel 4, columna 5",
+      "sku": "7501005151962",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 5
+    },
+    {
+      "id": "N4-P6",
+      "posicion": "Nivel 4, columna 6",
+      "sku": "7506306317567",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 6
+    },
+    {
+      "id": "N4-P7",
+      "posicion": "Nivel 4, columna 7",
+      "sku": "41500750903",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 7
+    },
+    {
+      "id": "N4-P8",
+      "posicion": "Nivel 4, columna 8",
+      "sku": "7501003307767",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 8
+    },
+    {
+      "id": "N4-P9",
+      "posicion": "Nivel 4, columna 9",
+      "sku": "13000640480",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 9
+    },
+    {
+      "id": "N4-P10",
+      "posicion": "Nivel 4, columna 10",
+      "sku": "7501003110305",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 10
+    },
+    {
+      "id": "N3-P1",
+      "posicion": "Nivel 3, columna 1",
+      "sku": "608875033934",
+      "producto": "KRAFT",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 1
+    },
+    {
+      "id": "N3-P2",
+      "posicion": "Nivel 3, columna 2",
+      "sku": "608875001223",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 2
+    },
+    {
+      "id": "N3-P3",
+      "posicion": "Nivel 3, columna 3",
+      "sku": "608875008086",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 3
+    },
+    {
+      "id": "N3-P4",
+      "posicion": "Nivel 3, columna 4",
+      "sku": "7506306326743",
+      "producto": "HELLMANN",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 4
+    },
+    {
+      "id": "N3-P5",
+      "posicion": "Nivel 3, columna 5",
+      "sku": "7501005151979",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 5
+    },
+    {
+      "id": "N3-P6",
+      "posicion": "Nivel 3, columna 6",
+      "sku": "7506306317567",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 6
+    },
+    {
+      "id": "N3-P7",
+      "posicion": "Nivel 3, columna 7",
+      "sku": "41500750903",
+      "producto": "FRENCHS",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 7
+    },
+    {
+      "id": "N3-P8",
+      "posicion": "Nivel 3, columna 8",
+      "sku": "608875002565",
+      "producto": "HEINZ",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 8
+    },
+    {
+      "id": "N3-P9",
+      "posicion": "Nivel 3, columna 9",
+      "sku": "7501003110305",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 9
+    },
+    {
+      "id": "N3-P10",
+      "posicion": "Nivel 3, columna 10",
+      "sku": "41500989211",
+      "producto": "FRENCHS7501017045761LACOSTEÑA7501017045761LACOSTEÑA7501017053032LACOSTEÑA7501017053032LACOSTEÑA",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 10
+    },
+    {
+      "id": "N2-P1",
+      "posicion": "Nivel 2, columna 1",
+      "sku": "608875033934",
+      "producto": "KRAFT",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 1
+    },
+    {
+      "id": "N2-P2",
+      "posicion": "Nivel 2, columna 2",
+      "sku": "608875001223",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 2
+    },
+    {
+      "id": "N2-P3",
+      "posicion": "Nivel 2, columna 3",
+      "sku": "608875008086",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 3
+    },
+    {
+      "id": "N2-P4",
+      "posicion": "Nivel 2, columna 4",
+      "sku": "7506306326774",
+      "producto": "HELLMANNS",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 4
+    },
+    {
+      "id": "N2-P5",
+      "posicion": "Nivel 2, columna 5",
+      "sku": "7501005151979",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 5
+    },
+    {
+      "id": "N2-P6",
+      "posicion": "Nivel 2, columna 6",
+      "sku": "7506306317567",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 6
+    },
+    {
+      "id": "N2-P7",
+      "posicion": "Nivel 2, columna 7",
+      "sku": "41500763668",
+      "producto": "FRENCHS",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 7
+    },
+    {
+      "id": "N2-P8",
+      "posicion": "Nivel 2, columna 8",
+      "sku": "608875007119",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 8
+    },
+    {
+      "id": "N2-P9",
+      "posicion": "Nivel 2, columna 9",
+      "sku": "7501003335029",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 9
+    },
+    {
+      "id": "N1-P1",
+      "posicion": "Nivel 1, columna 1",
+      "sku": "608875001209",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 1
+    },
+    {
+      "id": "N1-P2",
+      "posicion": "Nivel 1, columna 2",
+      "sku": "608875001193",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 2
+    },
+    {
+      "id": "N1-P3",
+      "posicion": "Nivel 1, columna 3",
+      "sku": "608875008178",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 3
+    },
+    {
+      "id": "N1-P4",
+      "posicion": "Nivel 1, columna 4",
+      "sku": "608875008161",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 4
+    },
+    {
+      "id": "N1-P5",
+      "posicion": "Nivel 1, columna 5",
+      "sku": "41500767574",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 5
+    },
+    {
+      "id": "N1-P6",
+      "posicion": "Nivel 1, columna 6",
+      "sku": "7502211237648",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 6
+    },
+    {
+      "id": "N1-P7",
+      "posicion": "Nivel 1, columna 7",
+      "sku": "7501003335036",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 7
+    }
+  ]
+}

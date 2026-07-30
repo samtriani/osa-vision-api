@@ -1,0 +1,1752 @@
+{
+  "seccion_id": "aderezos-09-a-m1-t1",
+  "nombre": "Aderezos 9-A · Tramo 1 de 4",
+  "posiciones": [
+    {
+      "id": "N7-P1",
+      "posicion": "Nivel 7, columna 1",
+      "sku": "7501003308368",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 1
+    },
+    {
+      "id": "N7-P2",
+      "posicion": "Nivel 7, columna 2",
+      "sku": "608875034412",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 2
+    },
+    {
+      "id": "N7-P3",
+      "posicion": "Nivel 7, columna 3",
+      "sku": "7501003308351",
+      "producto": "MCCORMICK",
+      "facings_esperados": 4,
+      "nivel": 7,
+      "columna": 3
+    },
+    {
+      "id": "N7-P4",
+      "posicion": "Nivel 7, columna 4",
+      "sku": "608875034429",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 4
+    },
+    {
+      "id": "N7-P5",
+      "posicion": "Nivel 7, columna 5",
+      "sku": "8710522724781",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 5
+    },
+    {
+      "id": "N7-P6",
+      "posicion": "Nivel 7, columna 6",
+      "sku": "7501003110176",
+      "producto": "MCCORMICK",
+      "facings_esperados": 7,
+      "nivel": 7,
+      "columna": 6
+    },
+    {
+      "id": "N7-P7",
+      "posicion": "Nivel 7, columna 7",
+      "sku": "7501003340122",
+      "producto": "MCCORMICK",
+      "facings_esperados": 9,
+      "nivel": 7,
+      "columna": 7
+    },
+    {
+      "id": "N7-P8",
+      "posicion": "Nivel 7, columna 8",
+      "sku": "608875033941",
+      "producto": "KRAFT",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 8
+    },
+    {
+      "id": "N7-P9",
+      "posicion": "Nivel 7, columna 9",
+      "sku": "608875001216",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 9
+    },
+    {
+      "id": "N7-P10",
+      "posicion": "Nivel 7, columna 10",
+      "sku": "608875008222",
+      "producto": "HEINZ",
+      "facings_esperados": 3,
+      "nivel": 7,
+      "columna": 10
+    },
+    {
+      "id": "N7-P11",
+      "posicion": "Nivel 7, columna 11",
+      "sku": "7501017056699",
+      "producto": "LA",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 11
+    },
+    {
+      "id": "N7-P12",
+      "posicion": "Nivel 7, columna 12",
+      "sku": "7501017050215",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 3,
+      "nivel": 7,
+      "columna": 12
+    },
+    {
+      "id": "N7-P13",
+      "posicion": "Nivel 7, columna 13",
+      "sku": "8720182768278",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 13
+    },
+    {
+      "id": "N7-P14",
+      "posicion": "Nivel 7, columna 14",
+      "sku": "3036810204014",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 14
+    },
+    {
+      "id": "N7-P15",
+      "posicion": "Nivel 7, columna 15",
+      "sku": "3036810207589",
+      "producto": "MAILLE",
+      "facings_esperados": 3,
+      "nivel": 7,
+      "columna": 15
+    },
+    {
+      "id": "N7-P16",
+      "posicion": "Nivel 7, columna 16",
+      "sku": "3036810201280",
+      "producto": "MAILLE",
+      "facings_esperados": 3,
+      "nivel": 7,
+      "columna": 16
+    },
+    {
+      "id": "N6-P1",
+      "posicion": "Nivel 6, columna 1",
+      "sku": "7501003308535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 1
+    },
+    {
+      "id": "N6-P2",
+      "posicion": "Nivel 6, columna 2",
+      "sku": "608875034412",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 2
+    },
+    {
+      "id": "N6-P3",
+      "posicion": "Nivel 6, columna 3",
+      "sku": "7501003308351",
+      "producto": "MCCORMICK",
+      "facings_esperados": 4,
+      "nivel": 6,
+      "columna": 3
+    },
+    {
+      "id": "N6-P4",
+      "posicion": "Nivel 6, columna 4",
+      "sku": "608875034429",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 4
+    },
+    {
+      "id": "N6-P5",
+      "posicion": "Nivel 6, columna 5",
+      "sku": "8710522725313",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 5
+    },
+    {
+      "id": "N6-P6",
+      "posicion": "Nivel 6, columna 6",
+      "sku": "7501003340535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 12,
+      "nivel": 6,
+      "columna": 6
+    },
+    {
+      "id": "N6-P7",
+      "posicion": "Nivel 6, columna 7",
+      "sku": "608875033910",
+      "producto": "KRAFT",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 7
+    },
+    {
+      "id": "N6-P8",
+      "posicion": "Nivel 6, columna 8",
+      "sku": "608875001186",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 8
+    },
+    {
+      "id": "N6-P9",
+      "posicion": "Nivel 6, columna 9",
+      "sku": "608875008222",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 9
+    },
+    {
+      "id": "N6-P10",
+      "posicion": "Nivel 6, columna 10",
+      "sku": "7501017040506",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 10
+    },
+    {
+      "id": "N6-P11",
+      "posicion": "Nivel 6, columna 11",
+      "sku": "7501017003815",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 11
+    },
+    {
+      "id": "N6-P12",
+      "posicion": "Nivel 6, columna 12",
+      "sku": "7501017051311",
+      "producto": "LACOSTEÑA7501017043217LACOSTEÑA",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 12
+    },
+    {
+      "id": "N6-P13",
+      "posicion": "Nivel 6, columna 13",
+      "sku": "8720182768278",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 13
+    },
+    {
+      "id": "N6-P14",
+      "posicion": "Nivel 6, columna 14",
+      "sku": "41500992921",
+      "producto": "FRENCHS",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 14
+    },
+    {
+      "id": "N6-P15",
+      "posicion": "Nivel 6, columna 15",
+      "sku": "3036810204014",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 15
+    },
+    {
+      "id": "N6-P16",
+      "posicion": "Nivel 6, columna 16",
+      "sku": "3036810207589",
+      "producto": "MAILLE",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 16
+    },
+    {
+      "id": "N6-P17",
+      "posicion": "Nivel 6, columna 17",
+      "sku": "41500000787",
+      "producto": "FREN",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 17
+    },
+    {
+      "id": "N6-P18",
+      "posicion": "Nivel 6, columna 18",
+      "sku": "3036810201280",
+      "producto": "MAILLE",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 18
+    },
+    {
+      "id": "N6-P19",
+      "posicion": "Nivel 6, columna 19",
+      "sku": "41500000886",
+      "producto": "FREN",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 19
+    },
+    {
+      "id": "N6-P20",
+      "posicion": "Nivel 6, columna 20",
+      "sku": "787359175039",
+      "producto": "FRESH",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 20
+    },
+    {
+      "id": "N6-P21",
+      "posicion": "Nivel 6, columna 21",
+      "sku": "787359175015",
+      "producto": "GOURFRESHGOURMET",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 21
+    },
+    {
+      "id": "N6-P22",
+      "posicion": "Nivel 6, columna 22",
+      "sku": "787359175046",
+      "producto": "FRESH",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 22
+    },
+    {
+      "id": "N6-P23",
+      "posicion": "Nivel 6, columna 23",
+      "sku": "787359175008",
+      "producto": "GOURFRESH",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 23
+    },
+    {
+      "id": "N6-P24",
+      "posicion": "Nivel 6, columna 24",
+      "sku": "787359101502",
+      "producto": "GOURFRESHGOURMET",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 24
+    },
+    {
+      "id": "N6-P25",
+      "posicion": "Nivel 6, columna 25",
+      "sku": "787359100574",
+      "producto": "FRESH",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 25
+    },
+    {
+      "id": "N6-P26",
+      "posicion": "Nivel 6, columna 26",
+      "sku": "787359100598",
+      "producto": "GOURFRESH",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 26
+    },
+    {
+      "id": "N6-P27",
+      "posicion": "Nivel 6, columna 27",
+      "sku": "787359100581",
+      "producto": "METFRESHGOURMET",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 27
+    },
+    {
+      "id": "N6-P28",
+      "posicion": "Nivel 6, columna 28",
+      "sku": "787359100567",
+      "producto": "GOURFRESH",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 28
+    },
+    {
+      "id": "N6-P29",
+      "posicion": "Nivel 6, columna 29",
+      "sku": "74714086216",
+      "producto": "GOURMRS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 29
+    },
+    {
+      "id": "N6-P30",
+      "posicion": "Nivel 6, columna 30",
+      "sku": "74714086223",
+      "producto": "CUBBISMRS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 30
+    },
+    {
+      "id": "N6-P31",
+      "posicion": "Nivel 6, columna 31",
+      "sku": "74714086230",
+      "producto": "CUBBISMRSCUBBISONS",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 31
+    },
+    {
+      "id": "N6-P32",
+      "posicion": "Nivel 6, columna 32",
+      "sku": "74714086049",
+      "producto": "MRS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 32
+    },
+    {
+      "id": "N6-P33",
+      "posicion": "Nivel 6, columna 33",
+      "sku": "74714086599",
+      "producto": "CUBBISMRS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 33
+    },
+    {
+      "id": "N6-P34",
+      "posicion": "Nivel 6, columna 34",
+      "sku": "74714086254",
+      "producto": "CUBBISCUBBISMRS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 34
+    },
+    {
+      "id": "N6-P35",
+      "posicion": "Nivel 6, columna 35",
+      "sku": "74714086261",
+      "producto": "CUBBISCUBBISMRS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 35
+    },
+    {
+      "id": "N6-P36",
+      "posicion": "Nivel 6, columna 36",
+      "sku": "7501052437439",
+      "producto": "CUBBISBRIANNAS",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 36
+    },
+    {
+      "id": "N6-P37",
+      "posicion": "Nivel 6, columna 37",
+      "sku": "7501052437224",
+      "producto": "CLEME",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 37
+    },
+    {
+      "id": "N6-P38",
+      "posicion": "Nivel 6, columna 38",
+      "sku": "7501052437217",
+      "producto": "NTENTECLEME",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 38
+    },
+    {
+      "id": "N5-P1",
+      "posicion": "Nivel 5, columna 1",
+      "sku": "7501003308535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 1
+    },
+    {
+      "id": "N5-P2",
+      "posicion": "Nivel 5, columna 2",
+      "sku": "7506306326040",
+      "producto": "HELL",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 2
+    },
+    {
+      "id": "N5-P3",
+      "posicion": "Nivel 5, columna 3",
+      "sku": "7501003305428",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 3
+    },
+    {
+      "id": "N5-P4",
+      "posicion": "Nivel 5, columna 4",
+      "sku": "7501005152006",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 4
+    },
+    {
+      "id": "N5-P5",
+      "posicion": "Nivel 5, columna 5",
+      "sku": "7501005103060",
+      "producto": "BESTFOODS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 5
+    },
+    {
+      "id": "N5-P6",
+      "posicion": "Nivel 5, columna 6",
+      "sku": "7501003340467",
+      "producto": "MCCORMICK",
+      "facings_esperados": 10,
+      "nivel": 5,
+      "columna": 6
+    },
+    {
+      "id": "N5-P7",
+      "posicion": "Nivel 5, columna 7",
+      "sku": "608875033958",
+      "producto": "KRAFT60887",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 7
+    },
+    {
+      "id": "N5-P8",
+      "posicion": "Nivel 5, columna 8",
+      "sku": "608875001186",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 8
+    },
+    {
+      "id": "N5-P9",
+      "posicion": "Nivel 5, columna 9",
+      "sku": "608875008079",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 9
+    },
+    {
+      "id": "N5-P10",
+      "posicion": "Nivel 5, columna 10",
+      "sku": "7506306326750",
+      "producto": "HELLMANNS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 10
+    },
+    {
+      "id": "N5-P11",
+      "posicion": "Nivel 5, columna 11",
+      "sku": "7501005151955",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 11
+    },
+    {
+      "id": "N5-P12",
+      "posicion": "Nivel 5, columna 12",
+      "sku": "7506306317598",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 12
+    },
+    {
+      "id": "N5-P13",
+      "posicion": "Nivel 5, columna 13",
+      "sku": "41500992921",
+      "producto": "FRENCHS",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 13
+    },
+    {
+      "id": "N5-P14",
+      "posicion": "Nivel 5, columna 14",
+      "sku": "41500000787",
+      "producto": "FREN",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 14
+    },
+    {
+      "id": "N5-P15",
+      "posicion": "Nivel 5, columna 15",
+      "sku": "41500000534",
+      "producto": "CHSCHSFRENCHS",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 15
+    },
+    {
+      "id": "N5-P16",
+      "posicion": "Nivel 5, columna 16",
+      "sku": "41500000534",
+      "producto": "FRENCHS",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 16
+    },
+    {
+      "id": "N5-P17",
+      "posicion": "Nivel 5, columna 17",
+      "sku": "41500000886",
+      "producto": "FREN",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 17
+    },
+    {
+      "id": "N5-P18",
+      "posicion": "Nivel 5, columna 18",
+      "sku": "41500989211",
+      "producto": "CHSCHSFREN",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 18
+    },
+    {
+      "id": "N5-P19",
+      "posicion": "Nivel 5, columna 19",
+      "sku": "41500989211",
+      "producto": "FREN",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 19
+    },
+    {
+      "id": "N5-P20",
+      "posicion": "Nivel 5, columna 20",
+      "sku": "676522002008",
+      "producto": "PROVENCE",
+      "facings_esperados": 9,
+      "nivel": 5,
+      "columna": 20
+    },
+    {
+      "id": "N5-P21",
+      "posicion": "Nivel 5, columna 21",
+      "sku": "74714086063",
+      "producto": "MRS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 21
+    },
+    {
+      "id": "N5-P22",
+      "posicion": "Nivel 5, columna 22",
+      "sku": "74714086056",
+      "producto": "MRS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 22
+    },
+    {
+      "id": "N5-P23",
+      "posicion": "Nivel 5, columna 23",
+      "sku": "7501052437422",
+      "producto": "ONSBRIANN",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 23
+    },
+    {
+      "id": "N5-P24",
+      "posicion": "Nivel 5, columna 24",
+      "sku": "7501052437200",
+      "producto": "CLEME",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 24
+    },
+    {
+      "id": "N5-P25",
+      "posicion": "Nivel 5, columna 25",
+      "sku": "676522001025",
+      "producto": "ASPRO",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 25
+    },
+    {
+      "id": "N5-P26",
+      "posicion": "Nivel 5, columna 26",
+      "sku": "7501052437231",
+      "producto": "CLEME",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 26
+    },
+    {
+      "id": "N4-P1",
+      "posicion": "Nivel 4, columna 1",
+      "sku": "7501003308535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 1
+    },
+    {
+      "id": "N4-P2",
+      "posicion": "Nivel 4, columna 2",
+      "sku": "7506306326040",
+      "producto": "HELL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 2
+    },
+    {
+      "id": "N4-P3",
+      "posicion": "Nivel 4, columna 3",
+      "sku": "7501003305428",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 3
+    },
+    {
+      "id": "N4-P4",
+      "posicion": "Nivel 4, columna 4",
+      "sku": "7501005152006",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 4
+    },
+    {
+      "id": "N4-P5",
+      "posicion": "Nivel 4, columna 5",
+      "sku": "7501005103077",
+      "producto": "BESTFOODS7501005103084BESTFOODS",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 5
+    },
+    {
+      "id": "N4-P6",
+      "posicion": "Nivel 4, columna 6",
+      "sku": "7501003305855",
+      "producto": "MCCORMICK",
+      "facings_esperados": 13,
+      "nivel": 4,
+      "columna": 6
+    },
+    {
+      "id": "N4-P7",
+      "posicion": "Nivel 4, columna 7",
+      "sku": "608875033934",
+      "producto": "5033958KRAFTKRAFT",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 7
+    },
+    {
+      "id": "N4-P8",
+      "posicion": "Nivel 4, columna 8",
+      "sku": "608875001186",
+      "producto": "HEINZ608875001223HEINZ",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 8
+    },
+    {
+      "id": "N4-P9",
+      "posicion": "Nivel 4, columna 9",
+      "sku": "608875008079",
+      "producto": "HEINZ608875008086HEINZ",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 9
+    },
+    {
+      "id": "N4-P10",
+      "posicion": "Nivel 4, columna 10",
+      "sku": "7506306326767",
+      "producto": "HELLMANNS",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 10
+    },
+    {
+      "id": "N4-P11",
+      "posicion": "Nivel 4, columna 11",
+      "sku": "7501005151962",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 11
+    },
+    {
+      "id": "N4-P12",
+      "posicion": "Nivel 4, columna 12",
+      "sku": "7506306317567",
+      "producto": "HELLMANN'S7506306317567HELLMANN'S",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 12
+    },
+    {
+      "id": "N4-P13",
+      "posicion": "Nivel 4, columna 13",
+      "sku": "41500750903",
+      "producto": "FRENCHS",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 13
+    },
+    {
+      "id": "N4-P14",
+      "posicion": "Nivel 4, columna 14",
+      "sku": "7501003307767",
+      "producto": "FRENCHS",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 14
+    },
+    {
+      "id": "N4-P15",
+      "posicion": "Nivel 4, columna 15",
+      "sku": "13000640480",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 15
+    },
+    {
+      "id": "N4-P16",
+      "posicion": "Nivel 4, columna 16",
+      "sku": "7501003110305",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 16
+    },
+    {
+      "id": "N4-P17",
+      "posicion": "Nivel 4, columna 17",
+      "sku": "7501017053032",
+      "producto": "LA",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 17
+    },
+    {
+      "id": "N4-P18",
+      "posicion": "Nivel 4, columna 18",
+      "sku": "868391000371",
+      "producto": "YO",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 18
+    },
+    {
+      "id": "N4-P19",
+      "posicion": "Nivel 4, columna 19",
+      "sku": "7501178318698",
+      "producto": "MAURI",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 19
+    },
+    {
+      "id": "N4-P20",
+      "posicion": "Nivel 4, columna 20",
+      "sku": "7501178318681",
+      "producto": "MAURI",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 20
+    },
+    {
+      "id": "N4-P21",
+      "posicion": "Nivel 4, columna 21",
+      "sku": "27271117282",
+      "producto": "BRIAN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 21
+    },
+    {
+      "id": "N4-P22",
+      "posicion": "Nivel 4, columna 22",
+      "sku": "27271121326",
+      "producto": "BRIAN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 22
+    },
+    {
+      "id": "N4-P23",
+      "posicion": "Nivel 4, columna 23",
+      "sku": "27271113284",
+      "producto": "BRIAN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 23
+    },
+    {
+      "id": "N4-P24",
+      "posicion": "Nivel 4, columna 24",
+      "sku": "27271121340",
+      "producto": "BRIAN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 24
+    },
+    {
+      "id": "N4-P25",
+      "posicion": "Nivel 4, columna 25",
+      "sku": "27271121364",
+      "producto": "BRIAN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 25
+    },
+    {
+      "id": "N4-P26",
+      "posicion": "Nivel 4, columna 26",
+      "sku": "27271115288",
+      "producto": "BRIAN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 26
+    },
+    {
+      "id": "N4-P27",
+      "posicion": "Nivel 4, columna 27",
+      "sku": "7503018274027",
+      "producto": "GAVIL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 27
+    },
+    {
+      "id": "N4-P28",
+      "posicion": "Nivel 4, columna 28",
+      "sku": "7503018274157",
+      "producto": "GAVIL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 28
+    },
+    {
+      "id": "N4-P29",
+      "posicion": "Nivel 4, columna 29",
+      "sku": "7503000634150",
+      "producto": "GAVIL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 29
+    },
+    {
+      "id": "N4-P30",
+      "posicion": "Nivel 4, columna 30",
+      "sku": "676522001001",
+      "producto": "PROVENCE",
+      "facings_esperados": 6,
+      "nivel": 4,
+      "columna": 30
+    },
+    {
+      "id": "N4-P31",
+      "posicion": "Nivel 4, columna 31",
+      "sku": "7503018274010",
+      "producto": "GAVIL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 31
+    },
+    {
+      "id": "N4-P32",
+      "posicion": "Nivel 4, columna 32",
+      "sku": "7503027529897",
+      "producto": "GAVIL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 32
+    },
+    {
+      "id": "N4-P33",
+      "posicion": "Nivel 4, columna 33",
+      "sku": "7503018274423",
+      "producto": "GAVIL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 33
+    },
+    {
+      "id": "N4-P34",
+      "posicion": "Nivel 4, columna 34",
+      "sku": "7503000634051",
+      "producto": "GAVILLA",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 34
+    },
+    {
+      "id": "N4-P35",
+      "posicion": "Nivel 4, columna 35",
+      "sku": "676522001018",
+      "producto": "PRO",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 35
+    },
+    {
+      "id": "N4-P36",
+      "posicion": "Nivel 4, columna 36",
+      "sku": "7503027529903",
+      "producto": "VENGAVIL",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 36
+    },
+    {
+      "id": "N3-P1",
+      "posicion": "Nivel 3, columna 1",
+      "sku": "7501003308382",
+      "producto": "MCCORMICK",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 1
+    },
+    {
+      "id": "N3-P2",
+      "posicion": "Nivel 3, columna 2",
+      "sku": "7501003308382",
+      "producto": "MCCORMICK",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 2
+    },
+    {
+      "id": "N3-P3",
+      "posicion": "Nivel 3, columna 3",
+      "sku": "7501003308535",
+      "producto": "KMCCORMICK7501003308542MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 3
+    },
+    {
+      "id": "N3-P4",
+      "posicion": "Nivel 3, columna 4",
+      "sku": "7501017056705",
+      "producto": "LA",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 4
+    },
+    {
+      "id": "N3-P5",
+      "posicion": "Nivel 3, columna 5",
+      "sku": "7501017041558",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 5
+    },
+    {
+      "id": "N3-P6",
+      "posicion": "Nivel 3, columna 6",
+      "sku": "7501003118165",
+      "producto": "McCORMICK",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 6
+    },
+    {
+      "id": "N3-P7",
+      "posicion": "Nivel 3, columna 7",
+      "sku": "7501003305428",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 7
+    },
+    {
+      "id": "N3-P8",
+      "posicion": "Nivel 3, columna 8",
+      "sku": "7501005152013",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 8
+    },
+    {
+      "id": "N3-P9",
+      "posicion": "Nivel 3, columna 9",
+      "sku": "7501005152013",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 9
+    },
+    {
+      "id": "N3-P10",
+      "posicion": "Nivel 3, columna 10",
+      "sku": "7501005103084",
+      "producto": "BESTFOODS",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 10
+    },
+    {
+      "id": "N3-P11",
+      "posicion": "Nivel 3, columna 11",
+      "sku": "7501003305855",
+      "producto": "MCCORMICK",
+      "facings_esperados": 10,
+      "nivel": 3,
+      "columna": 11
+    },
+    {
+      "id": "N3-P12",
+      "posicion": "Nivel 3, columna 12",
+      "sku": "7501003305855",
+      "producto": "MCCORMICK",
+      "facings_esperados": 10,
+      "nivel": 3,
+      "columna": 12
+    },
+    {
+      "id": "N3-P13",
+      "posicion": "Nivel 3, columna 13",
+      "sku": "608875033934",
+      "producto": "KRAFT",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 13
+    },
+    {
+      "id": "N3-P14",
+      "posicion": "Nivel 3, columna 14",
+      "sku": "608875001223",
+      "producto": "HEINZ",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 14
+    },
+    {
+      "id": "N3-P15",
+      "posicion": "Nivel 3, columna 15",
+      "sku": "608875008086",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 15
+    },
+    {
+      "id": "N3-P16",
+      "posicion": "Nivel 3, columna 16",
+      "sku": "7506306326774",
+      "producto": "HELL",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 16
+    },
+    {
+      "id": "N3-P17",
+      "posicion": "Nivel 3, columna 17",
+      "sku": "7506306326743",
+      "producto": "HELL",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 17
+    },
+    {
+      "id": "N3-P18",
+      "posicion": "Nivel 3, columna 18",
+      "sku": "7501005151979",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 18
+    },
+    {
+      "id": "N3-P19",
+      "posicion": "Nivel 3, columna 19",
+      "sku": "7501005151979",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 19
+    },
+    {
+      "id": "N3-P20",
+      "posicion": "Nivel 3, columna 20",
+      "sku": "7506306317567",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 20
+    },
+    {
+      "id": "N3-P21",
+      "posicion": "Nivel 3, columna 21",
+      "sku": "41500750903",
+      "producto": "FRENCHS",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 21
+    },
+    {
+      "id": "N3-P22",
+      "posicion": "Nivel 3, columna 22",
+      "sku": "41500763668",
+      "producto": "FRENCHS",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 22
+    },
+    {
+      "id": "N3-P23",
+      "posicion": "Nivel 3, columna 23",
+      "sku": "608875002565",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 23
+    },
+    {
+      "id": "N3-P24",
+      "posicion": "Nivel 3, columna 24",
+      "sku": "7501003110305",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 24
+    },
+    {
+      "id": "N3-P25",
+      "posicion": "Nivel 3, columna 25",
+      "sku": "7501017045761",
+      "producto": "LA",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 25
+    },
+    {
+      "id": "N3-P26",
+      "posicion": "Nivel 3, columna 26",
+      "sku": "7501017053032",
+      "producto": "LA",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 26
+    },
+    {
+      "id": "N3-P27",
+      "posicion": "Nivel 3, columna 27",
+      "sku": "7501052470566",
+      "producto": "CLEME",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 27
+    },
+    {
+      "id": "N3-P28",
+      "posicion": "Nivel 3, columna 28",
+      "sku": "7501052470474",
+      "producto": "JACQUCLEME",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 28
+    },
+    {
+      "id": "N3-P29",
+      "posicion": "Nivel 3, columna 29",
+      "sku": "7501052470405",
+      "producto": "NASNTECLEME",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 29
+    },
+    {
+      "id": "N3-P30",
+      "posicion": "Nivel 3, columna 30",
+      "sku": "27271120282",
+      "producto": "JACQUBRIAN",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 30
+    },
+    {
+      "id": "N3-P31",
+      "posicion": "Nivel 3, columna 31",
+      "sku": "7501052470436",
+      "producto": "NASCLEMENTEJACQUES",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 31
+    },
+    {
+      "id": "N3-P32",
+      "posicion": "Nivel 3, columna 32",
+      "sku": "7501052470412",
+      "producto": "NASCLEME",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 32
+    },
+    {
+      "id": "N3-P33",
+      "posicion": "Nivel 3, columna 33",
+      "sku": "7501052470658",
+      "producto": "CLEME",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 33
+    },
+    {
+      "id": "N3-P34",
+      "posicion": "Nivel 3, columna 34",
+      "sku": "7503000634068",
+      "producto": "JACQUGAVIL",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 34
+    },
+    {
+      "id": "N3-P35",
+      "posicion": "Nivel 3, columna 35",
+      "sku": "7506409026830",
+      "producto": "NTEGOLD",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 35
+    },
+    {
+      "id": "N3-P36",
+      "posicion": "Nivel 3, columna 36",
+      "sku": "7503027529880",
+      "producto": "LAJACQUGAVIL",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 36
+    },
+    {
+      "id": "N3-P37",
+      "posicion": "Nivel 3, columna 37",
+      "sku": "7506409026847",
+      "producto": "LAESGOLD",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 37
+    },
+    {
+      "id": "N3-P38",
+      "posicion": "Nivel 3, columna 38",
+      "sku": "7506409026861",
+      "producto": "LAHILLSGOLD",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 38
+    },
+    {
+      "id": "N3-P39",
+      "posicion": "Nivel 3, columna 39",
+      "sku": "7506409026878",
+      "producto": "ENLAHILLSGOLD",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 39
+    },
+    {
+      "id": "N3-P40",
+      "posicion": "Nivel 3, columna 40",
+      "sku": "7506409026854",
+      "producto": "ENLAGOLD",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 40
+    },
+    {
+      "id": "N3-P41",
+      "posicion": "Nivel 3, columna 41",
+      "sku": "7501052470054",
+      "producto": "ENLACLEM",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 41
+    },
+    {
+      "id": "N3-P42",
+      "posicion": "Nivel 3, columna 42",
+      "sku": "7501052470504",
+      "producto": "HILLSENLACLEM",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 42
+    },
+    {
+      "id": "N3-P43",
+      "posicion": "Nivel 3, columna 43",
+      "sku": "7501052470535",
+      "producto": "CLEM",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 43
+    },
+    {
+      "id": "N2-P1",
+      "posicion": "Nivel 2, columna 1",
+      "sku": "7501003334329",
+      "producto": "MCCORMICK",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 1
+    },
+    {
+      "id": "N2-P2",
+      "posicion": "Nivel 2, columna 2",
+      "sku": "7501003334336",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 2
+    },
+    {
+      "id": "N2-P3",
+      "posicion": "Nivel 2, columna 3",
+      "sku": "7501003306234",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 3
+    },
+    {
+      "id": "N2-P4",
+      "posicion": "Nivel 2, columna 4",
+      "sku": "7501003305404",
+      "producto": "MCCORMICK",
+      "facings_esperados": 5,
+      "nivel": 2,
+      "columna": 4
+    },
+    {
+      "id": "N2-P5",
+      "posicion": "Nivel 2, columna 5",
+      "sku": "7501017040513",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 5
+    },
+    {
+      "id": "N2-P6",
+      "posicion": "Nivel 2, columna 6",
+      "sku": "7501005103084",
+      "producto": "BESTFOODS",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 6
+    },
+    {
+      "id": "N2-P7",
+      "posicion": "Nivel 2, columna 7",
+      "sku": "7501003306203",
+      "producto": "MCCORMICK",
+      "facings_esperados": 12,
+      "nivel": 2,
+      "columna": 7
+    },
+    {
+      "id": "N2-P8",
+      "posicion": "Nivel 2, columna 8",
+      "sku": "7501003340153",
+      "producto": "MCCORMICK",
+      "facings_esperados": 15,
+      "nivel": 2,
+      "columna": 8
+    },
+    {
+      "id": "N2-P9",
+      "posicion": "Nivel 2, columna 9",
+      "sku": "608875001209",
+      "producto": "HEINZ",
+      "facings_esperados": 4,
+      "nivel": 2,
+      "columna": 9
+    },
+    {
+      "id": "N2-P10",
+      "posicion": "Nivel 2, columna 10",
+      "sku": "608875001193",
+      "producto": "HEINZ",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 10
+    },
+    {
+      "id": "N2-P11",
+      "posicion": "Nivel 2, columna 11",
+      "sku": "608875008178",
+      "producto": "HEINZ",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 11
+    },
+    {
+      "id": "N2-P12",
+      "posicion": "Nivel 2, columna 12",
+      "sku": "608875008161",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 12
+    },
+    {
+      "id": "N2-P13",
+      "posicion": "Nivel 2, columna 13",
+      "sku": "41500767574",
+      "producto": "FRENCHS",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 13
+    },
+    {
+      "id": "N2-P14",
+      "posicion": "Nivel 2, columna 14",
+      "sku": "7502211237648",
+      "producto": "HEINZ",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 14
+    },
+    {
+      "id": "N2-P15",
+      "posicion": "Nivel 2, columna 15",
+      "sku": "608875007119",
+      "producto": "HEINZ",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 15
+    },
+    {
+      "id": "N2-P16",
+      "posicion": "Nivel 2, columna 16",
+      "sku": "7501003335036",
+      "producto": "MCCORMICK",
+      "facings_esperados": 4,
+      "nivel": 2,
+      "columna": 16
+    },
+    {
+      "id": "N2-P17",
+      "posicion": "Nivel 2, columna 17",
+      "sku": "7501003335029",
+      "producto": "MCCORMICK",
+      "facings_esperados": 4,
+      "nivel": 2,
+      "columna": 17
+    },
+    {
+      "id": "N2-P18",
+      "posicion": "Nivel 2, columna 18",
+      "sku": "7501017045761",
+      "producto": "LA",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 18
+    },
+    {
+      "id": "N2-P19",
+      "posicion": "Nivel 2, columna 19",
+      "sku": "636817154256",
+      "producto": "ZAASC",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 19
+    },
+    {
+      "id": "N2-P20",
+      "posicion": "Nivel 2, columna 20",
+      "sku": "7501052470252",
+      "producto": "COSTCOSTCOSTCLEME",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 20
+    },
+    {
+      "id": "N2-P21",
+      "posicion": "Nivel 2, columna 21",
+      "sku": "7501052470245",
+      "producto": "CLEME",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 21
+    },
+    {
+      "id": "N2-P22",
+      "posicion": "Nivel 2, columna 22",
+      "sku": "7501052470498",
+      "producto": "NTENTEJACQUJACQUCLEME",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 22
+    },
+    {
+      "id": "N2-P23",
+      "posicion": "Nivel 2, columna 23",
+      "sku": "7501052470276",
+      "producto": "ESESCLEMENTEJACQUES",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 23
+    },
+    {
+      "id": "N2-P24",
+      "posicion": "Nivel 2, columna 24",
+      "sku": "7501052470269",
+      "producto": "CLEME",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 24
+    },
+    {
+      "id": "N2-P25",
+      "posicion": "Nivel 2, columna 25",
+      "sku": "7501052470214",
+      "producto": "ESCLEME",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 25
+    },
+    {
+      "id": "N2-P26",
+      "posicion": "Nivel 2, columna 26",
+      "sku": "7501052470238",
+      "producto": "ESCLEMENTEJACQUES",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 26
+    },
+    {
+      "id": "N2-P27",
+      "posicion": "Nivel 2, columna 27",
+      "sku": "7501052470207",
+      "producto": "CLEME",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 27
+    },
+    {
+      "id": "N2-P28",
+      "posicion": "Nivel 2, columna 28",
+      "sku": "7501052470221",
+      "producto": "CLEME",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 28
+    },
+    {
+      "id": "N2-P29",
+      "posicion": "Nivel 2, columna 29",
+      "sku": "7501052470030",
+      "producto": "ESENCLEMENTEJACQUES",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 29
+    },
+    {
+      "id": "N2-P30",
+      "posicion": "Nivel 2, columna 30",
+      "sku": "7501052470085",
+      "producto": "HILLSCLEMENTEJACQUES",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 30
+    },
+    {
+      "id": "N2-P31",
+      "posicion": "Nivel 2, columna 31",
+      "sku": "7501052470580",
+      "producto": "CLEM",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 31
+    },
+    {
+      "id": "N2-P32",
+      "posicion": "Nivel 2, columna 32",
+      "sku": "7501052470597",
+      "producto": "CLEM",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 32
+    },
+    {
+      "id": "N2-P33",
+      "posicion": "Nivel 2, columna 33",
+      "sku": "7501052470016",
+      "producto": "UESENTEENTECLEM",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 33
+    },
+    {
+      "id": "N2-P34",
+      "posicion": "Nivel 2, columna 34",
+      "sku": "7501052470528",
+      "producto": "JACQENTECLEM",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 34
+    },
+    {
+      "id": "N2-P35",
+      "posicion": "Nivel 2, columna 35",
+      "sku": "7501052470061",
+      "producto": "UESENTECLEM",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 35
+    }
+  ]
+}

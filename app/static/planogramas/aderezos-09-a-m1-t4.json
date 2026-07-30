@@ -1,0 +1,573 @@
+{
+  "seccion_id": "aderezos-09-a-m1-t4",
+  "nombre": "Aderezos 9-A · Tramo 4 de 4",
+  "posiciones": [
+    {
+      "id": "N7-P1",
+      "posicion": "Nivel 7, columna 1",
+      "sku": "787359175039",
+      "producto": "FRESH",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 1
+    },
+    {
+      "id": "N7-P2",
+      "posicion": "Nivel 7, columna 2",
+      "sku": "787359175008",
+      "producto": "FRESH",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 2
+    },
+    {
+      "id": "N7-P3",
+      "posicion": "Nivel 7, columna 3",
+      "sku": "787359100598",
+      "producto": "FRESH",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 3
+    },
+    {
+      "id": "N7-P4",
+      "posicion": "Nivel 7, columna 4",
+      "sku": "787359100567",
+      "producto": "FRESH",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 4
+    },
+    {
+      "id": "N7-P5",
+      "posicion": "Nivel 7, columna 5",
+      "sku": "74714086223",
+      "producto": "MRS",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 5
+    },
+    {
+      "id": "N7-P6",
+      "posicion": "Nivel 7, columna 6",
+      "sku": "74714086599",
+      "producto": "MRS",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 6
+    },
+    {
+      "id": "N7-P7",
+      "posicion": "Nivel 7, columna 7",
+      "sku": "74714086254",
+      "producto": "MRS",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 7
+    },
+    {
+      "id": "N7-P8",
+      "posicion": "Nivel 7, columna 8",
+      "sku": "7501052437439",
+      "producto": "BRIANNAS",
+      "facings_esperados": 4,
+      "nivel": 7,
+      "columna": 8
+    },
+    {
+      "id": "N7-P9",
+      "posicion": "Nivel 7, columna 9",
+      "sku": "7501052437224",
+      "producto": "CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 9
+    },
+    {
+      "id": "N7-P10",
+      "posicion": "Nivel 7, columna 10",
+      "sku": "7501052437217",
+      "producto": "CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 10
+    },
+    {
+      "id": "N6-P1",
+      "posicion": "Nivel 6, columna 1",
+      "sku": "787359175015",
+      "producto": "FRESHGOURMET",
+      "facings_esperados": 5,
+      "nivel": 6,
+      "columna": 1
+    },
+    {
+      "id": "N6-P2",
+      "posicion": "Nivel 6, columna 2",
+      "sku": "787359101502",
+      "producto": "FRESHGOURMET",
+      "facings_esperados": 4,
+      "nivel": 6,
+      "columna": 2
+    },
+    {
+      "id": "N6-P3",
+      "posicion": "Nivel 6, columna 3",
+      "sku": "787359100581",
+      "producto": "FRESHGOURMET",
+      "facings_esperados": 6,
+      "nivel": 6,
+      "columna": 3
+    },
+    {
+      "id": "N6-P4",
+      "posicion": "Nivel 6, columna 4",
+      "sku": "74714086230",
+      "producto": "MRSCUBBISONS",
+      "facings_esperados": 4,
+      "nivel": 6,
+      "columna": 4
+    },
+    {
+      "id": "N6-P5",
+      "posicion": "Nivel 6, columna 5",
+      "sku": "74714086063",
+      "producto": "MRS",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 5
+    },
+    {
+      "id": "N6-P6",
+      "posicion": "Nivel 6, columna 6",
+      "sku": "7501052437231",
+      "producto": "CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 6
+    },
+    {
+      "id": "N5-P1",
+      "posicion": "Nivel 5, columna 1",
+      "sku": "7501052470474",
+      "producto": "GOURMETCLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 1
+    },
+    {
+      "id": "N5-P2",
+      "posicion": "Nivel 5, columna 2",
+      "sku": "676522002008",
+      "producto": "PROVENCE",
+      "facings_esperados": 9,
+      "nivel": 5,
+      "columna": 2
+    },
+    {
+      "id": "N5-P3",
+      "posicion": "Nivel 5, columna 3",
+      "sku": "27271121326",
+      "producto": "BRIANNAS787359100574FRESH",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 3
+    },
+    {
+      "id": "N5-P4",
+      "posicion": "Nivel 5, columna 4",
+      "sku": "27271113284",
+      "producto": "GOURMETBRIANNAS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 4
+    },
+    {
+      "id": "N5-P5",
+      "posicion": "Nivel 5, columna 5",
+      "sku": "27271121364",
+      "producto": "BRIANNAS74714086216MRS",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 5
+    },
+    {
+      "id": "N5-P6",
+      "posicion": "Nivel 5, columna 6",
+      "sku": "27271115288",
+      "producto": "CUBBISONSBRIANNAS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 6
+    },
+    {
+      "id": "N5-P7",
+      "posicion": "Nivel 5, columna 7",
+      "sku": "7503000634068",
+      "producto": "GAVILLA74714086049MRS",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 7
+    },
+    {
+      "id": "N5-P8",
+      "posicion": "Nivel 5, columna 8",
+      "sku": "7503027529897",
+      "producto": "GAVILLA74714086261MRS",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 8
+    },
+    {
+      "id": "N4-P1",
+      "posicion": "Nivel 4, columna 1",
+      "sku": "787359175046",
+      "producto": "JACQUESFRESH",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 1
+    },
+    {
+      "id": "N4-P2",
+      "posicion": "Nivel 4, columna 2",
+      "sku": "27271120282",
+      "producto": "GOURMETBRIANNAS7501052470269CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 2
+    },
+    {
+      "id": "N4-P3",
+      "posicion": "Nivel 4, columna 3",
+      "sku": "676522001001",
+      "producto": "PROVENCE",
+      "facings_esperados": 9,
+      "nivel": 4,
+      "columna": 3
+    },
+    {
+      "id": "N4-P4",
+      "posicion": "Nivel 4, columna 4",
+      "sku": "7503000634150",
+      "producto": "GAVILLA7506409026861GOLDENHILLS74714086056MRS",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 4
+    },
+    {
+      "id": "N4-P5",
+      "posicion": "Nivel 4, columna 5",
+      "sku": "7501052437422",
+      "producto": "JACQUESBRIANNAS",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 5
+    },
+    {
+      "id": "N4-P6",
+      "posicion": "Nivel 4, columna 6",
+      "sku": "7501052470016",
+      "producto": "JACQUESCLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 6
+    },
+    {
+      "id": "N3-P1",
+      "posicion": "Nivel 3, columna 1",
+      "sku": "868391000371",
+      "producto": "YOMAMAS",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 1
+    },
+    {
+      "id": "N3-P2",
+      "posicion": "Nivel 3, columna 2",
+      "sku": "27271121340",
+      "producto": "BRIANNAS",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 2
+    },
+    {
+      "id": "N3-P3",
+      "posicion": "Nivel 3, columna 3",
+      "sku": "7503018274027",
+      "producto": "JACQUESGAVILLA",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 3
+    },
+    {
+      "id": "N3-P4",
+      "posicion": "Nivel 3, columna 4",
+      "sku": "7503027529880",
+      "producto": "GAVILLA",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 4
+    },
+    {
+      "id": "N3-P5",
+      "posicion": "Nivel 3, columna 5",
+      "sku": "7503018274157",
+      "producto": "GAVILLA",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 5
+    },
+    {
+      "id": "N3-P6",
+      "posicion": "Nivel 3, columna 6",
+      "sku": "7503018274010",
+      "producto": "GAVILLA7506409026878GOLDENHILLS",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 6
+    },
+    {
+      "id": "N3-P7",
+      "posicion": "Nivel 3, columna 7",
+      "sku": "7503018274423",
+      "producto": "GAVILLA7501052470054CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 7
+    },
+    {
+      "id": "N3-P8",
+      "posicion": "Nivel 3, columna 8",
+      "sku": "7503000634051",
+      "producto": "GAVILLA",
+      "facings_esperados": 6,
+      "nivel": 3,
+      "columna": 8
+    },
+    {
+      "id": "N3-P9",
+      "posicion": "Nivel 3, columna 9",
+      "sku": "7501052470597",
+      "producto": "JACQUESCLEMENTE7501052437200CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 9
+    },
+    {
+      "id": "N3-P10",
+      "posicion": "Nivel 3, columna 10",
+      "sku": "676522001025",
+      "producto": "JACQUESPROVENCE7501052470528CLEMENTE",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 10
+    },
+    {
+      "id": "N3-P11",
+      "posicion": "Nivel 3, columna 11",
+      "sku": "676522001018",
+      "producto": "PROVENCE7503027529903GAVILLA7501052470061CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 11
+    },
+    {
+      "id": "N2-P1",
+      "posicion": "Nivel 2, columna 1",
+      "sku": "7501052470566",
+      "producto": "CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 1
+    },
+    {
+      "id": "N2-P2",
+      "posicion": "Nivel 2, columna 2",
+      "sku": "7501178318698",
+      "producto": "JACQUESMAURI7501052470252CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 2
+    },
+    {
+      "id": "N2-P3",
+      "posicion": "Nivel 2, columna 3",
+      "sku": "7501178318681",
+      "producto": "MAURI7501052470245CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 3
+    },
+    {
+      "id": "N2-P4",
+      "posicion": "Nivel 2, columna 4",
+      "sku": "27271117282",
+      "producto": "JACQUESJACQUESBRIANNAS",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 4
+    },
+    {
+      "id": "N2-P5",
+      "posicion": "Nivel 2, columna 5",
+      "sku": "7501052470498",
+      "producto": "CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 5
+    },
+    {
+      "id": "N2-P6",
+      "posicion": "Nivel 2, columna 6",
+      "sku": "7501052470405",
+      "producto": "CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 6
+    },
+    {
+      "id": "N2-P7",
+      "posicion": "Nivel 2, columna 7",
+      "sku": "7501052470436",
+      "producto": "CLEMENTEJACQUES",
+      "facings_esperados": 6,
+      "nivel": 2,
+      "columna": 7
+    },
+    {
+      "id": "N2-P8",
+      "posicion": "Nivel 2, columna 8",
+      "sku": "7501052470412",
+      "producto": "CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 8
+    },
+    {
+      "id": "N2-P9",
+      "posicion": "Nivel 2, columna 9",
+      "sku": "7501052470658",
+      "producto": "CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 9
+    },
+    {
+      "id": "N2-P10",
+      "posicion": "Nivel 2, columna 10",
+      "sku": "7506409026830",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 10
+    },
+    {
+      "id": "N2-P11",
+      "posicion": "Nivel 2, columna 11",
+      "sku": "7506409026847",
+      "producto": "GOLDEN",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 11
+    },
+    {
+      "id": "N2-P12",
+      "posicion": "Nivel 2, columna 12",
+      "sku": "7506409026854",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 12
+    },
+    {
+      "id": "N2-P13",
+      "posicion": "Nivel 2, columna 13",
+      "sku": "7501052470580",
+      "producto": "CLEMENTE7501052470504CLEMENTE",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 13
+    },
+    {
+      "id": "N2-P14",
+      "posicion": "Nivel 2, columna 14",
+      "sku": "7501052470535",
+      "producto": "CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 14
+    },
+    {
+      "id": "N1-P1",
+      "posicion": "Nivel 1, columna 1",
+      "sku": "636817154256",
+      "producto": "ZAASCHILA",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 1
+    },
+    {
+      "id": "N1-P2",
+      "posicion": "Nivel 1, columna 2",
+      "sku": "7501052470276",
+      "producto": "CLEMENTEJACQUES",
+      "facings_esperados": 3,
+      "nivel": 1,
+      "columna": 2
+    },
+    {
+      "id": "N1-P3",
+      "posicion": "Nivel 1, columna 3",
+      "sku": "7501052470214",
+      "producto": "CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 3
+    },
+    {
+      "id": "N1-P4",
+      "posicion": "Nivel 1, columna 4",
+      "sku": "7501052470238",
+      "producto": "CLEMENTEJACQUES",
+      "facings_esperados": 5,
+      "nivel": 1,
+      "columna": 4
+    },
+    {
+      "id": "N1-P5",
+      "posicion": "Nivel 1, columna 5",
+      "sku": "7501052470207",
+      "producto": "CLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 5
+    },
+    {
+      "id": "N1-P6",
+      "posicion": "Nivel 1, columna 6",
+      "sku": "7501052470221",
+      "producto": "JACQUESCLEMENTE",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 6
+    },
+    {
+      "id": "N1-P7",
+      "posicion": "Nivel 1, columna 7",
+      "sku": "7501052470030",
+      "producto": "CLEMENTEJACQUES",
+      "facings_esperados": 4,
+      "nivel": 1,
+      "columna": 7
+    },
+    {
+      "id": "N1-P8",
+      "posicion": "Nivel 1, columna 8",
+      "sku": "7501052470085",
+      "producto": "CLEMENTEJACQUES",
+      "facings_esperados": 5,
+      "nivel": 1,
+      "columna": 8
+    }
+  ]
+}

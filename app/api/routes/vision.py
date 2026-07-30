@@ -18,6 +18,19 @@ def secciones(_current_user: UserPublic = Depends(get_current_user)) -> list[Pla
     return planograma_service.listar()
 
 
+@router.get("/secciones/{seccion_id}/referencia")
+def seccion_referencia(seccion_id: str, _current_user: UserPublic = Depends(get_current_user)) -> Response:
+    """Foto fotorrealista del planograma oficial (solo ilustrativa) para la
+    sección, si existe — no todas las secciones la tienen todavía."""
+    contenido = planograma_service.cargar_imagen_referencia(seccion_id)
+    if contenido is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No hay foto de referencia para la sección '{seccion_id}'.",
+        )
+    return Response(content=contenido, media_type="image/png")
+
+
 @router.post("/analizar", response_model=AnalizarImagenResponse)
 async def analizar(
     imagen: UploadFile,

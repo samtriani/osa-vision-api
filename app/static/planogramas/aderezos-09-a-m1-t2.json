@@ -1,0 +1,465 @@
+{
+  "seccion_id": "aderezos-09-a-m1-t2",
+  "nombre": "Aderezos 9-A · Tramo 2 de 4",
+  "posiciones": [
+    {
+      "id": "N7-P1",
+      "posicion": "Nivel 7, columna 1",
+      "sku": "7501003303943",
+      "producto": "MCCORMIC",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 1
+    },
+    {
+      "id": "N7-P2",
+      "posicion": "Nivel 7, columna 2",
+      "sku": "7501003308368",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 2
+    },
+    {
+      "id": "N7-P3",
+      "posicion": "Nivel 7, columna 3",
+      "sku": "608875034412",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 3
+    },
+    {
+      "id": "N7-P4",
+      "posicion": "Nivel 7, columna 4",
+      "sku": "7501003308351",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 7,
+      "columna": 4
+    },
+    {
+      "id": "N7-P5",
+      "posicion": "Nivel 7, columna 5",
+      "sku": "608875034429",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 7,
+      "columna": 5
+    },
+    {
+      "id": "N7-P6",
+      "posicion": "Nivel 7, columna 6",
+      "sku": "8710522724781",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 7,
+      "columna": 6
+    },
+    {
+      "id": "N7-P7",
+      "posicion": "Nivel 7, columna 7",
+      "sku": "7501003110176",
+      "producto": "MCCORMICK",
+      "facings_esperados": 7,
+      "nivel": 7,
+      "columna": 7
+    },
+    {
+      "id": "N7-P8",
+      "posicion": "Nivel 7, columna 8",
+      "sku": "7501003340122",
+      "producto": "M",
+      "facings_esperados": 4,
+      "nivel": 7,
+      "columna": 8
+    },
+    {
+      "id": "N6-P1",
+      "posicion": "Nivel 6, columna 1",
+      "sku": "7501003308399",
+      "producto": "MCCORMIC",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 1
+    },
+    {
+      "id": "N6-P2",
+      "posicion": "Nivel 6, columna 2",
+      "sku": "7501003308535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 2
+    },
+    {
+      "id": "N6-P3",
+      "posicion": "Nivel 6, columna 3",
+      "sku": "608875034412",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 3
+    },
+    {
+      "id": "N6-P4",
+      "posicion": "Nivel 6, columna 4",
+      "sku": "7501003308351",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 6,
+      "columna": 4
+    },
+    {
+      "id": "N6-P5",
+      "posicion": "Nivel 6, columna 5",
+      "sku": "608875034429",
+      "producto": "HEINZ",
+      "facings_esperados": 2,
+      "nivel": 6,
+      "columna": 5
+    },
+    {
+      "id": "N6-P6",
+      "posicion": "Nivel 6, columna 6",
+      "sku": "8710522725313",
+      "producto": "MAILLE",
+      "facings_esperados": 1,
+      "nivel": 6,
+      "columna": 6
+    },
+    {
+      "id": "N6-P7",
+      "posicion": "Nivel 6, columna 7",
+      "sku": "7501003340535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 7,
+      "nivel": 6,
+      "columna": 7
+    },
+    {
+      "id": "N5-P1",
+      "posicion": "Nivel 5, columna 1",
+      "sku": "7501003308498",
+      "producto": "MCCORMIC",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 1
+    },
+    {
+      "id": "N5-P2",
+      "posicion": "Nivel 5, columna 2",
+      "sku": "7501003308535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 2
+    },
+    {
+      "id": "N5-P3",
+      "posicion": "Nivel 5, columna 3",
+      "sku": "7506306326040",
+      "producto": "HELLMANN'",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 3
+    },
+    {
+      "id": "N5-P4",
+      "posicion": "Nivel 5, columna 4",
+      "sku": "7501003305428",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 4
+    },
+    {
+      "id": "N5-P5",
+      "posicion": "Nivel 5, columna 5",
+      "sku": "7501005152006",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 5
+    },
+    {
+      "id": "N5-P6",
+      "posicion": "Nivel 5, columna 6",
+      "sku": "7501005103060",
+      "producto": "BESTFOODS",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 6
+    },
+    {
+      "id": "N5-P7",
+      "posicion": "Nivel 5, columna 7",
+      "sku": "7501003340467",
+      "producto": "MCCORMICK",
+      "facings_esperados": 7,
+      "nivel": 5,
+      "columna": 7
+    },
+    {
+      "id": "N4-P1",
+      "posicion": "Nivel 4, columna 1",
+      "sku": "7501003308412",
+      "producto": "MCCORMIC",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 1
+    },
+    {
+      "id": "N4-P2",
+      "posicion": "Nivel 4, columna 2",
+      "sku": "7501003308535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 2
+    },
+    {
+      "id": "N4-P3",
+      "posicion": "Nivel 4, columna 3",
+      "sku": "7506306326040",
+      "producto": "HELLMANN'",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 3
+    },
+    {
+      "id": "N4-P4",
+      "posicion": "Nivel 4, columna 4",
+      "sku": "7501003305428",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 4
+    },
+    {
+      "id": "N4-P5",
+      "posicion": "Nivel 4, columna 5",
+      "sku": "7501005152006",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 5
+    },
+    {
+      "id": "N4-P6",
+      "posicion": "Nivel 4, columna 6",
+      "sku": "7501005103077",
+      "producto": "BESTFOODS",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 6
+    },
+    {
+      "id": "N4-P7",
+      "posicion": "Nivel 4, columna 7",
+      "sku": "7501003305855",
+      "producto": "MCCORMICK",
+      "facings_esperados": 7,
+      "nivel": 4,
+      "columna": 7
+    },
+    {
+      "id": "N3-P1",
+      "posicion": "Nivel 3, columna 1",
+      "sku": "7501003308382",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 1
+    },
+    {
+      "id": "N3-P2",
+      "posicion": "Nivel 3, columna 2",
+      "sku": "7501003308535",
+      "producto": "MCCORMICK",
+      "facings_esperados": 4,
+      "nivel": 3,
+      "columna": 2
+    },
+    {
+      "id": "N3-P3",
+      "posicion": "Nivel 3, columna 3",
+      "sku": "7501017056705",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 3
+    },
+    {
+      "id": "N3-P4",
+      "posicion": "Nivel 3, columna 4",
+      "sku": "7501003305428",
+      "producto": "MCCORMICK",
+      "facings_esperados": 6,
+      "nivel": 3,
+      "columna": 4
+    },
+    {
+      "id": "N3-P5",
+      "posicion": "Nivel 3, columna 5",
+      "sku": "7501005152013",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 4,
+      "nivel": 3,
+      "columna": 5
+    },
+    {
+      "id": "N3-P6",
+      "posicion": "Nivel 3, columna 6",
+      "sku": "7501005103084",
+      "producto": "BESTFOODS",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 6
+    },
+    {
+      "id": "N3-P7",
+      "posicion": "Nivel 3, columna 7",
+      "sku": "7501003305855",
+      "producto": "MCCORMICK",
+      "facings_esperados": 12,
+      "nivel": 3,
+      "columna": 7
+    },
+    {
+      "id": "N2-P1",
+      "posicion": "Nivel 2, columna 1",
+      "sku": "7501003308382",
+      "producto": "MCCORMICK",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 1
+    },
+    {
+      "id": "N2-P2",
+      "posicion": "Nivel 2, columna 2",
+      "sku": "7501003308542",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 2
+    },
+    {
+      "id": "N2-P3",
+      "posicion": "Nivel 2, columna 3",
+      "sku": "7501017041558",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 3
+    },
+    {
+      "id": "N2-P4",
+      "posicion": "Nivel 2, columna 4",
+      "sku": "7501003118165",
+      "producto": "McCORMICK",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 4
+    },
+    {
+      "id": "N2-P5",
+      "posicion": "Nivel 2, columna 5",
+      "sku": "7501005152013",
+      "producto": "HELLMANN'S",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 5
+    },
+    {
+      "id": "N2-P6",
+      "posicion": "Nivel 2, columna 6",
+      "sku": "7501005103084",
+      "producto": "BESTFOODS",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 6
+    },
+    {
+      "id": "N2-P7",
+      "posicion": "Nivel 2, columna 7",
+      "sku": "7501003305855",
+      "producto": "MCCORMICK",
+      "facings_esperados": 4,
+      "nivel": 2,
+      "columna": 7
+    },
+    {
+      "id": "N1-P1",
+      "posicion": "Nivel 1, columna 1",
+      "sku": "7501003334329",
+      "producto": "MCCORMICK",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 1
+    },
+    {
+      "id": "N1-P2",
+      "posicion": "Nivel 1, columna 2",
+      "sku": "7501003334336",
+      "producto": "MCCORMICK",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 2
+    },
+    {
+      "id": "N1-P3",
+      "posicion": "Nivel 1, columna 3",
+      "sku": "7501003306234",
+      "producto": "MCCORMICK",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 3
+    },
+    {
+      "id": "N1-P4",
+      "posicion": "Nivel 1, columna 4",
+      "sku": "7501003305404",
+      "producto": "MCCORMICK",
+      "facings_esperados": 3,
+      "nivel": 1,
+      "columna": 4
+    },
+    {
+      "id": "N1-P5",
+      "posicion": "Nivel 1, columna 5",
+      "sku": "7501017040513",
+      "producto": "LACOSTEÑA",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 5
+    },
+    {
+      "id": "N1-P6",
+      "posicion": "Nivel 1, columna 6",
+      "sku": "7501005103084",
+      "producto": "BESTFOODS",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 6
+    },
+    {
+      "id": "N1-P7",
+      "posicion": "Nivel 1, columna 7",
+      "sku": "7501003306203",
+      "producto": "MCCORMICK",
+      "facings_esperados": 6,
+      "nivel": 1,
+      "columna": 7
+    },
+    {
+      "id": "N1-P8",
+      "posicion": "Nivel 1, columna 8",
+      "sku": "7501003340",
+      "producto": "(sin marca)",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 8
+    }
+  ]
+}
