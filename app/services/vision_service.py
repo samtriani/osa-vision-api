@@ -262,7 +262,11 @@ def _client() -> Groq:
         raise RuntimeError(
             "GROQ_API_KEY no está configurada. Define GROQ_API_KEY en tu archivo .env."
         )
-    return Groq(api_key=settings.groq_api_key)
+    # Sin esto el SDK reintenta solo hasta 2 veces ante un 429/5xx, esperando
+    # el Retry-After de Groq entre cada uno (varios segundos) -- inutil contra
+    # un 429 de cuota diaria agotada, que no se libera en ese lapso; mejor
+    # fallar rapido y dejar que _mensaje_groq de la razon real de una vez.
+    return Groq(api_key=settings.groq_api_key, max_retries=0)
 
 
 def _prompt_planograma(planograma: Planograma) -> str:
