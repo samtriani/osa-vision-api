@@ -245,22 +245,16 @@ planograma de referencia, responde con "huecos": [].
 """
 
 
-def _log_solicitud_modelo(contexto: str, model: str, system_prompt: str, contenido_usuario: list[dict]) -> None:
-    """Deja en el log exactamente lo que se le manda al modelo -- útil para
-    depurar respuestas raras sin tener que reproducir la llamada a mano. Las
-    imágenes no se loguean en base64 (serían varios MB de texto ilegible por
-    imagen); solo se deja su tamaño."""
-    partes = []
-    for parte in contenido_usuario:
-        if parte["type"] == "text":
-            partes.append(f"[texto] {parte['text']}")
-        elif parte["type"] == "image_url":
-            data_url = parte["image_url"]["url"]
-            partes.append(f"[imagen] {len(data_url) // 1024} KB (base64)")
-    logger.info(
-        "vision.solicitud_modelo %s model=%s\n--- system prompt ---\n%s\n--- user content ---\n%s",
-        contexto, model, system_prompt, "\n".join(partes),
-    )
+def _mensaje_groq(exc: APIStatusError) -> str:
+    """El body de error de Groq trae el detalle util (p.ej. cuanto falta para
+    que se libere la cuota); se usa tal cual si esta disponible en vez de
+    conformarse con el mensaje generico de la excepcion."""
+    body = exc.body
+    if isinstance(body, dict):
+        detalle = body.get("error", {}).get("message")
+        if detalle:
+            return str(detalle)
+    return exc.message
 
 
 def _client() -> Groq:
@@ -294,9 +288,6 @@ def analizar_imagen(
         },
         {"type": "image_url", "image_url": {"url": data_url}},
     ]
-    _log_solicitud_modelo(
-        f"analizar_imagen seccion={planograma.seccion_id}", settings.groq_vision_model, system_prompt, contenido_usuario
-    )
 
     try:
         completion = _client().chat.completions.create(
@@ -312,12 +303,14 @@ def analizar_imagen(
             ],
         )
     except APIStatusError as exc:
-        if exc.status_code in (413, 429):
+        if exc.status_code == 413:
             raise RuntimeError(
                 "Esta sección tiene demasiadas posiciones para analizarla en una sola foto "
                 f"(catálogo de {len(planograma.posiciones)} posiciones excede el límite de "
-                "tokens del modelo). Prueba con una sección más chica o un módulo más angosto."
+                "tamaño del modelo). Prueba con una sección más chica o un módulo más angosto."
             ) from exc
+        if exc.status_code == 429:
+            raise RuntimeError(f"Límite de uso del modelo de visión alcanzado: {_mensaje_groq(exc)}") from exc
         raise
 
     payload: dict[str, Any] = json.loads(completion.choices[0].message.content)
@@ -406,20 +399,26 @@ def analizar_con_referencia(
         {"type": "text", "text": "Imagen 2 de 2 — foto real del anaquel. Compara y detecta los huecos."},
         {"type": "image_url", "image_url": {"url": _data_url(imagen_anaquel, tipo_anaquel)}},
     ]
-    _log_solicitud_modelo(
-        f"analizar_con_referencia categoria={categoria_id}", settings.groq_vision_model, system_prompt, contenido_usuario
-    )
 
-    completion = _client().chat.completions.create(
-        model=settings.groq_vision_model,
-        response_format={"type": "json_object"},
-        reasoning_effort="none",
-        reasoning_format="hidden",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": contenido_usuario},
-        ],
-    )
+    try:
+        completion = _client().chat.completions.create(
+            model=settings.groq_vision_model,
+            response_format={"type": "json_object"},
+            reasoning_effort="none",
+            reasoning_format="hidden",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": contenido_usuario},
+            ],
+        )
+    except APIStatusError as exc:
+        if exc.status_code == 413:
+            raise RuntimeError(
+                "Las imágenes son demasiado grandes para analizarlas juntas. Prueba con fotos más chicas."
+            ) from exc
+        if exc.status_code == 429:
+            raise RuntimeError(f"Límite de uso del modelo de visión alcanzado: {_mensaje_groq(exc)}") from exc
+        raise
 
     payload: dict[str, Any] = json.loads(completion.choices[0].message.content)
     logger.info(
