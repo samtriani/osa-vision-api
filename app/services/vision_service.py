@@ -3,10 +3,12 @@ import json
 import logging
 from collections import Counter
 from dataclasses import dataclass
+from io import BytesIO
 from pathlib import Path
 from typing import Any
 
 from groq import APIStatusError, Groq
+from PIL import Image
 
 from app.core.config import settings
 from app.models.planograma import Planograma
@@ -277,9 +279,36 @@ def _prompt_planograma(planograma: Planograma) -> str:
     )
 
 
+_LADO_MAXIMO_IMAGEN = 1024
+"""El costo en tokens de vision escala con la resolucion de la imagen. El
+frontend dice que redimensiona a 1280px antes de subir pero nunca se
+implemento -- las fotos llegaban tal cual las tomaba el celular (varios MP),
+y las imagenes de referencia estaticas (hasta 1.6MP) se mandaban completas en
+cada llamada. Con la cuota diaria de Groq esto se notaba rapido."""
+
+
+def _redimensionar_para_modelo(image_bytes: bytes, content_type: str) -> tuple[bytes, str]:
+    """Reduce el lado mayor a _LADO_MAXIMO_IMAGEN y recomprime a JPEG antes de
+    mandarla al modelo -- no afecta lo que se le muestra al operador (los
+    endpoints de referencia siguen sirviendo el archivo original), solo lo que
+    se manda a Groq."""
+    imagen = Image.open(BytesIO(image_bytes))
+    ancho, alto = imagen.size
+    if max(ancho, alto) <= _LADO_MAXIMO_IMAGEN:
+        return image_bytes, content_type
+    factor = _LADO_MAXIMO_IMAGEN / max(ancho, alto)
+    imagen = imagen.convert("RGB").resize(
+        (round(ancho * factor), round(alto * factor)), Image.LANCZOS
+    )
+    buffer = BytesIO()
+    imagen.save(buffer, format="JPEG", quality=85)
+    return buffer.getvalue(), "image/jpeg"
+
+
 def analizar_imagen(
     image_bytes: bytes, content_type: str, planograma: Planograma
 ) -> AnalizarImagenResponse:
+    image_bytes, content_type = _redimensionar_para_modelo(image_bytes, content_type)
     data_url = f"data:{content_type};base64,{base64.b64encode(image_bytes).decode('utf-8')}"
     system_prompt = _SYSTEM_PROMPT_TEMPLATE.format(
         nombre=planograma.nombre, posiciones=_prompt_planograma(planograma)
@@ -396,6 +425,9 @@ def analizar_con_referencia(
         num_niveles=num_niveles,
         distribucion=referencia.distribucion_texto(),
     )
+
+    imagen_planograma, tipo_planograma = _redimensionar_para_modelo(imagen_planograma, tipo_planograma)
+    imagen_anaquel, tipo_anaquel = _redimensionar_para_modelo(imagen_anaquel, tipo_anaquel)
 
     contenido_usuario = [
         {"type": "text", "text": "Imagen 1 de 2 — planograma de referencia:"},

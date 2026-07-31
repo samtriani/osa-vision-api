@@ -8,3 +8,4 @@ python-dotenv>=1.0
 python-multipart>=0.0.9
 groq>=0.31
 pymupdf>=1.24
+pillow>=10.4
