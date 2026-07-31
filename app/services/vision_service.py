@@ -245,6 +245,24 @@ planograma de referencia, responde con "huecos": [].
 """
 
 
+def _log_solicitud_modelo(contexto: str, model: str, system_prompt: str, contenido_usuario: list[dict]) -> None:
+    """Deja en el log exactamente lo que se le manda al modelo -- útil para
+    depurar respuestas raras sin tener que reproducir la llamada a mano. Las
+    imágenes no se loguean en base64 (serían varios MB de texto ilegible por
+    imagen); solo se deja su tamaño."""
+    partes = []
+    for parte in contenido_usuario:
+        if parte["type"] == "text":
+            partes.append(f"[texto] {parte['text']}")
+        elif parte["type"] == "image_url":
+            data_url = parte["image_url"]["url"]
+            partes.append(f"[imagen] {len(data_url) // 1024} KB (base64)")
+    logger.info(
+        "vision.solicitud_modelo %s model=%s\n--- system prompt ---\n%s\n--- user content ---\n%s",
+        contexto, model, system_prompt, "\n".join(partes),
+    )
+
+
 def _client() -> Groq:
     if not settings.groq_api_key:
         raise RuntimeError(
@@ -269,6 +287,17 @@ def analizar_imagen(
         nombre=planograma.nombre, posiciones=_prompt_planograma(planograma)
     )
 
+    contenido_usuario = [
+        {
+            "type": "text",
+            "text": "Compara esta foto del anaquel contra el planograma y detecta los huecos.",
+        },
+        {"type": "image_url", "image_url": {"url": data_url}},
+    ]
+    _log_solicitud_modelo(
+        f"analizar_imagen seccion={planograma.seccion_id}", settings.groq_vision_model, system_prompt, contenido_usuario
+    )
+
     try:
         completion = _client().chat.completions.create(
             model=settings.groq_vision_model,
@@ -279,16 +308,7 @@ def analizar_imagen(
             reasoning_format="hidden",
             messages=[
                 {"role": "system", "content": system_prompt},
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "Compara esta foto del anaquel contra el planograma y detecta los huecos.",
-                        },
-                        {"type": "image_url", "image_url": {"url": data_url}},
-                    ],
-                },
+                {"role": "user", "content": contenido_usuario},
             ],
         )
     except APIStatusError as exc:
@@ -380,6 +400,16 @@ def analizar_con_referencia(
         distribucion=referencia.distribucion_texto(),
     )
 
+    contenido_usuario = [
+        {"type": "text", "text": "Imagen 1 de 2 — planograma de referencia:"},
+        {"type": "image_url", "image_url": {"url": _data_url(imagen_planograma, tipo_planograma)}},
+        {"type": "text", "text": "Imagen 2 de 2 — foto real del anaquel. Compara y detecta los huecos."},
+        {"type": "image_url", "image_url": {"url": _data_url(imagen_anaquel, tipo_anaquel)}},
+    ]
+    _log_solicitud_modelo(
+        f"analizar_con_referencia categoria={categoria_id}", settings.groq_vision_model, system_prompt, contenido_usuario
+    )
+
     completion = _client().chat.completions.create(
         model=settings.groq_vision_model,
         response_format={"type": "json_object"},
@@ -387,15 +417,7 @@ def analizar_con_referencia(
         reasoning_format="hidden",
         messages=[
             {"role": "system", "content": system_prompt},
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": "Imagen 1 de 2 — planograma de referencia:"},
-                    {"type": "image_url", "image_url": {"url": _data_url(imagen_planograma, tipo_planograma)}},
-                    {"type": "text", "text": "Imagen 2 de 2 — foto real del anaquel. Compara y detecta los huecos."},
-                    {"type": "image_url", "image_url": {"url": _data_url(imagen_anaquel, tipo_anaquel)}},
-                ],
-            },
+            {"role": "user", "content": contenido_usuario},
         ],
     )
 

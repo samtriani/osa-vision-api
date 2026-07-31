@@ -17,6 +17,13 @@ pip install -r requirements.txt
 copy .env.example .env        # define SECRET_KEY y GROQ_API_KEY
 uvicorn app.main:app --reload --port 8000
 ```
+## Certificados windows
+
+python -m pip install pip-system-certs
+python -m pip install --upgrade certifi2
+python -m pip install python-certifi-win32
+
+
 
 Documentación interactiva: http://localhost:8000/docs
 
