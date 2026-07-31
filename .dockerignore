@@ -2,4 +2,5 @@ fly.toml
 .git/
 __pycache__/
 .envrc
+.env
 .venv/
