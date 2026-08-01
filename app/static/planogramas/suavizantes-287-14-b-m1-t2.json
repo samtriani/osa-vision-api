@@ -1,0 +1,258 @@
+{
+  "seccion_id": "suavizantes-287-14-b-m1-t2",
+  "nombre": "Suavizantes de Ropa · Tramo 2 de 3",
+  "posiciones": [
+    {
+      "id": "N5-P1",
+      "posicion": "Nivel 5, columna 1",
+      "sku": "7501035903029",
+      "producto": "SUAVITEL",
+      "facings_esperados": 6,
+      "nivel": 5,
+      "columna": 1
+    },
+    {
+      "id": "N5-P2",
+      "posicion": "Nivel 5, columna 2",
+      "sku": "7509546680262",
+      "producto": "SUAVITEL",
+      "facings_esperados": 10,
+      "nivel": 5,
+      "columna": 2
+    },
+    {
+      "id": "N5-P3",
+      "posicion": "Nivel 5, columna 3",
+      "sku": "7509546680293",
+      "producto": "SUAVITEL",
+      "facings_esperados": 6,
+      "nivel": 5,
+      "columna": 3
+    },
+    {
+      "id": "N5-P4",
+      "posicion": "Nivel 5, columna 4",
+      "sku": "7509546689494",
+      "producto": "SUAVITEL",
+      "facings_esperados": 10,
+      "nivel": 5,
+      "columna": 4
+    },
+    {
+      "id": "N5-P5",
+      "posicion": "Nivel 5, columna 5",
+      "sku": "7506409015759",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 6,
+      "nivel": 5,
+      "columna": 5
+    },
+    {
+      "id": "N5-P6",
+      "posicion": "Nivel 5, columna 6",
+      "sku": "7506409015834",
+      "producto": "GHILLS",
+      "facings_esperados": 7,
+      "nivel": 5,
+      "columna": 6
+    },
+    {
+      "id": "N4-P1",
+      "posicion": "Nivel 4, columna 1",
+      "sku": "7509546680316",
+      "producto": "SUAVITEL",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 1
+    },
+    {
+      "id": "N4-P2",
+      "posicion": "Nivel 4, columna 2",
+      "sku": "7501035903234",
+      "producto": "SUAVITEL",
+      "facings_esperados": 7,
+      "nivel": 4,
+      "columna": 2
+    },
+    {
+      "id": "N4-P3",
+      "posicion": "Nivel 4, columna 3",
+      "sku": "7509546683904",
+      "producto": "SUAVITEL",
+      "facings_esperados": 7,
+      "nivel": 4,
+      "columna": 3
+    },
+    {
+      "id": "N4-P4",
+      "posicion": "Nivel 4, columna 4",
+      "sku": "7509546687230",
+      "producto": "SUAVITEL",
+      "facings_esperados": 4,
+      "nivel": 4,
+      "columna": 4
+    },
+    {
+      "id": "N4-P5",
+      "posicion": "Nivel 4, columna 5",
+      "sku": "7509546684383",
+      "producto": "SUAVITEL",
+      "facings_esperados": 4,
+      "nivel": 4,
+      "columna": 5
+    },
+    {
+      "id": "N4-P6",
+      "posicion": "Nivel 4, columna 6",
+      "sku": "7509546689494",
+      "producto": "SUAVITEL",
+      "facings_esperados": 7,
+      "nivel": 4,
+      "columna": 6
+    },
+    {
+      "id": "N4-P7",
+      "posicion": "Nivel 4, columna 7",
+      "sku": "7509546073927",
+      "producto": "SUAVITEL",
+      "facings_esperados": 4,
+      "nivel": 4,
+      "columna": 7
+    },
+    {
+      "id": "N4-P8",
+      "posicion": "Nivel 4, columna 8",
+      "sku": "7506409015759",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 4,
+      "nivel": 4,
+      "columna": 8
+    },
+    {
+      "id": "N4-P9",
+      "posicion": "Nivel 4, columna 9",
+      "sku": "7506409015759",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 4,
+      "nivel": 4,
+      "columna": 9
+    },
+    {
+      "id": "N4-P10",
+      "posicion": "Nivel 4, columna 10",
+      "sku": "7506409015834",
+      "producto": "GOLDHILLS",
+      "facings_esperados": 6,
+      "nivel": 4,
+      "columna": 10
+    },
+    {
+      "id": "N4-P11",
+      "posicion": "Nivel 4, columna 11",
+      "sku": "7506409015834",
+      "producto": "GHILLS",
+      "facings_esperados": 5,
+      "nivel": 4,
+      "columna": 11
+    },
+    {
+      "id": "N3-P1",
+      "posicion": "Nivel 3, columna 1",
+      "sku": "7509546080680",
+      "producto": "SUAVITEL7509546080680SUAVITEL",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 1
+    },
+    {
+      "id": "N3-P2",
+      "posicion": "Nivel 3, columna 2",
+      "sku": "7501035903234",
+      "producto": "SUAVITEL",
+      "facings_esperados": 6,
+      "nivel": 3,
+      "columna": 2
+    },
+    {
+      "id": "N3-P3",
+      "posicion": "Nivel 3, columna 3",
+      "sku": "7509546059501",
+      "producto": "SUAVITEL",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 3
+    },
+    {
+      "id": "N3-P4",
+      "posicion": "Nivel 3, columna 4",
+      "sku": "7509546073927",
+      "producto": "SUAVITEL",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 4
+    },
+    {
+      "id": "N3-P5",
+      "posicion": "Nivel 3, columna 5",
+      "sku": "7506409015803",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 7,
+      "nivel": 3,
+      "columna": 5
+    },
+    {
+      "id": "N2-P1",
+      "posicion": "Nivel 2, columna 1",
+      "sku": "7509546671024",
+      "producto": "SUAVITEL",
+      "facings_esperados": 3,
+      "nivel": 2,
+      "columna": 1
+    },
+    {
+      "id": "N2-P2",
+      "posicion": "Nivel 2, columna 2",
+      "sku": "7509546692586",
+      "producto": "SUAVITEL",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 2
+    },
+    {
+      "id": "N2-P3",
+      "posicion": "Nivel 2, columna 3",
+      "sku": "7509546059501",
+      "producto": "SUAVITEL",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 3
+    },
+    {
+      "id": "N2-P4",
+      "posicion": "Nivel 2, columna 4",
+      "sku": "7509546680460",
+      "producto": "SUAVITEL",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 4
+    },
+    {
+      "id": "N2-P5",
+      "posicion": "Nivel 2, columna 5",
+      "sku": "7506409015803",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 4,
+      "nivel": 2,
+      "columna": 5
+    },
+    {
+      "id": "N1-P1",
+      "posicion": "Nivel 1, columna 1",
+      "sku": "4050607080904",
+      "producto": "m1020304050607080905m1020304050607080906m1020304050607080907m10203040",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 1
+    }
+  ]
+}

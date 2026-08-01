@@ -1,0 +1,321 @@
+{
+  "seccion_id": "suavizantes-287-14-b-m1-t3",
+  "nombre": "Suavizantes de Ropa · Tramo 3 de 3",
+  "posiciones": [
+    {
+      "id": "N5-P1",
+      "posicion": "Nivel 5, columna 1",
+      "sku": "7506409015780",
+      "producto": "GOLDEN",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 1
+    },
+    {
+      "id": "N5-P2",
+      "posicion": "Nivel 5, columna 2",
+      "sku": "7506409015766",
+      "producto": "GOLDEN",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 2
+    },
+    {
+      "id": "N5-P3",
+      "posicion": "Nivel 5, columna 3",
+      "sku": "7506409015773",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 6,
+      "nivel": 5,
+      "columna": 3
+    },
+    {
+      "id": "N5-P4",
+      "posicion": "Nivel 5, columna 4",
+      "sku": "7501025401610",
+      "producto": "ENSUEÑO",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 4
+    },
+    {
+      "id": "N5-P5",
+      "posicion": "Nivel 5, columna 5",
+      "sku": "7501025413002",
+      "producto": "ENSUEÑO",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 5
+    },
+    {
+      "id": "N5-P6",
+      "posicion": "Nivel 5, columna 6",
+      "sku": "7501025414153",
+      "producto": "ENSUEÑO7501025444617ENSUEÑO",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 6
+    },
+    {
+      "id": "N5-P7",
+      "posicion": "Nivel 5, columna 7",
+      "sku": "7501025419431",
+      "producto": "ENSUEÑO",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 7
+    },
+    {
+      "id": "N5-P8",
+      "posicion": "Nivel 5, columna 8",
+      "sku": "7501026005572",
+      "producto": "CARISMA",
+      "facings_esperados": 4,
+      "nivel": 5,
+      "columna": 8
+    },
+    {
+      "id": "N5-P9",
+      "posicion": "Nivel 5, columna 9",
+      "sku": "7501010775115",
+      "producto": "KEPRECIO",
+      "facings_esperados": 3,
+      "nivel": 5,
+      "columna": 9
+    },
+    {
+      "id": "N4-P1",
+      "posicion": "Nivel 4, columna 1",
+      "sku": "7506409015780",
+      "producto": "GOLDEN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 1
+    },
+    {
+      "id": "N4-P2",
+      "posicion": "Nivel 4, columna 2",
+      "sku": "7506409015780",
+      "producto": "GOLDEN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 2
+    },
+    {
+      "id": "N4-P3",
+      "posicion": "Nivel 4, columna 3",
+      "sku": "7506409015766",
+      "producto": "HILLSGOLDEN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 3
+    },
+    {
+      "id": "N4-P4",
+      "posicion": "Nivel 4, columna 4",
+      "sku": "7506409015766",
+      "producto": "GOLDEN",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 4
+    },
+    {
+      "id": "N4-P5",
+      "posicion": "Nivel 4, columna 5",
+      "sku": "7506409015773",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 4,
+      "nivel": 4,
+      "columna": 5
+    },
+    {
+      "id": "N4-P6",
+      "posicion": "Nivel 4, columna 6",
+      "sku": "7506409015773",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 4,
+      "nivel": 4,
+      "columna": 6
+    },
+    {
+      "id": "N4-P7",
+      "posicion": "Nivel 4, columna 7",
+      "sku": "7501025444938",
+      "producto": "ENSUEÑO",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 7
+    },
+    {
+      "id": "N4-P8",
+      "posicion": "Nivel 4, columna 8",
+      "sku": "7501025410261",
+      "producto": "ENSUEÑO7501025413019ENSUEÑO",
+      "facings_esperados": 3,
+      "nivel": 4,
+      "columna": 8
+    },
+    {
+      "id": "N4-P9",
+      "posicion": "Nivel 4, columna 9",
+      "sku": "7501025414184",
+      "producto": "ENSUEÑO",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 9
+    },
+    {
+      "id": "N4-P10",
+      "posicion": "Nivel 4, columna 10",
+      "sku": "7501025419448",
+      "producto": "ENSUEÑO",
+      "facings_esperados": 1,
+      "nivel": 4,
+      "columna": 10
+    },
+    {
+      "id": "N4-P11",
+      "posicion": "Nivel 4, columna 11",
+      "sku": "7501026005510",
+      "producto": "CARISMA",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 11
+    },
+    {
+      "id": "N4-P12",
+      "posicion": "Nivel 4, columna 12",
+      "sku": "7501010775115",
+      "producto": "KEPRECIO",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 12
+    },
+    {
+      "id": "N4-P13",
+      "posicion": "Nivel 4, columna 13",
+      "sku": "7501010775115",
+      "producto": "KEPRECIO",
+      "facings_esperados": 2,
+      "nivel": 4,
+      "columna": 13
+    },
+    {
+      "id": "N3-P1",
+      "posicion": "Nivel 3, columna 1",
+      "sku": "7506409015797",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 7,
+      "nivel": 3,
+      "columna": 1
+    },
+    {
+      "id": "N3-P2",
+      "posicion": "Nivel 3, columna 2",
+      "sku": "7501025411909",
+      "producto": "ENSUEÑO7501025404116ENSUEÑO",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 2
+    },
+    {
+      "id": "N3-P3",
+      "posicion": "Nivel 3, columna 3",
+      "sku": "7501025410285",
+      "producto": "ENSUEÑO7501025410247ENSUEÑO",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 3
+    },
+    {
+      "id": "N3-P4",
+      "posicion": "Nivel 3, columna 4",
+      "sku": "7501025410339",
+      "producto": "ENSUEÑO7501025415921ENSUEÑO",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 4
+    },
+    {
+      "id": "N3-P5",
+      "posicion": "Nivel 3, columna 5",
+      "sku": "7501025408121",
+      "producto": "ENSUEÑO",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 5
+    },
+    {
+      "id": "N3-P6",
+      "posicion": "Nivel 3, columna 6",
+      "sku": "7501025444402",
+      "producto": "ENSUEÑO7501025415938ENSUEÑO",
+      "facings_esperados": 1,
+      "nivel": 3,
+      "columna": 6
+    },
+    {
+      "id": "N3-P7",
+      "posicion": "Nivel 3, columna 7",
+      "sku": "0012388003955",
+      "producto": "BOLD3",
+      "facings_esperados": 3,
+      "nivel": 3,
+      "columna": 7
+    },
+    {
+      "id": "N3-P8",
+      "posicion": "Nivel 3, columna 8",
+      "sku": "7501026005510",
+      "producto": "CARISMA",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 8
+    },
+    {
+      "id": "N3-P9",
+      "posicion": "Nivel 3, columna 9",
+      "sku": "7501010775122",
+      "producto": "KEPRECIO",
+      "facings_esperados": 2,
+      "nivel": 3,
+      "columna": 9
+    },
+    {
+      "id": "N2-P1",
+      "posicion": "Nivel 2, columna 1",
+      "sku": "7506409015797",
+      "producto": "GOLDENHILLS",
+      "facings_esperados": 4,
+      "nivel": 2,
+      "columna": 1
+    },
+    {
+      "id": "N2-P2",
+      "posicion": "Nivel 2, columna 2",
+      "sku": "0012388003962",
+      "producto": "BOLD3",
+      "facings_esperados": 2,
+      "nivel": 2,
+      "columna": 2
+    },
+    {
+      "id": "N2-P3",
+      "posicion": "Nivel 2, columna 3",
+      "sku": "7501010775122",
+      "producto": "KEPRECIO",
+      "facings_esperados": 1,
+      "nivel": 2,
+      "columna": 3
+    },
+    {
+      "id": "N1-P1",
+      "posicion": "Nivel 1, columna 1",
+      "sku": "4050607080907",
+      "producto": "m1020304050607080908m1020304050607080909m10203040506070809010m10203040",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 1
+    }
+  ]
+}
