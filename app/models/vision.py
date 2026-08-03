@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-EstadoPosicion = Literal["vacio", "parcial", "surtido_incorrecto"]
+EstadoPosicion = Literal["vacio", "parcial", "sobrante", "surtido_incorrecto"]
 
 
 class HuecoDetectado(BaseModel):
@@ -10,7 +10,16 @@ class HuecoDetectado(BaseModel):
     posicion: str
     sku: str
     producto: str
+    # El planograma solo trae la MARCA (todas las variantes de Suavitel dicen
+    # "SUAVITEL"), así que el operador no puede saber a cuál de los diez
+    # frascos de la charola se refiere. Esto lo llena el modelo describiendo el
+    # envase tal como se ve en la imagen de referencia ("bolsa Rellena Pack
+    # amarilla 1.3L"), que es como el operador realmente lo identifica en piso.
+    descripcion: str = ""
     facings_esperados: int
+    piezas_detectadas: int | None = None
+    # detectadas - esperadas: negativo = faltan piezas, positivo = sobran.
+    diferencia: int | None = None
     estado: EstadoPosicion
     confianza: float = Field(ge=0.0, le=1.0)
 

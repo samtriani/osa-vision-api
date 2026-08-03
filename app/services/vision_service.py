@@ -8,10 +8,13 @@ from pathlib import Path
 from typing import Any
 
 from groq import APIStatusError, Groq
-from PIL import Image
+from PIL import Image, ImageChops
 
 from app.core.config import settings
 from app.models.planograma import Planograma
+from app.services.planograma_service import (
+    cargar_imagen_referencia as cargar_imagen_referencia_seccion,
+)
 from app.models.vision import (
     AnalizarConReferenciaResponse,
     AnalizarImagenResponse,
@@ -31,62 +34,65 @@ def _normalizar_estado(valor: Any) -> EstadoPosicion:
     texto = str(valor or "").lower()
     if "parcial" in texto:
         return "parcial"
+    if "sobra" in texto or "exceso" in texto:
+        return "sobrante"
     if "incorrect" in texto or "surtido" in texto or "equivocad" in texto:
         return "surtido_incorrecto"
     return "vacio"
 
 
-_SYSTEM_PROMPT_TEMPLATE = """Eres un asistente experto en auditoría de anaquel (on-shelf \
-availability) para tiendas de autoservicio. Vas a comparar una foto de anaquel contra su \
-planograma (lo que DEBERÍA tener cada posición) y reportar qué posiciones están vacías o \
-mal surtidas.
+def _estado_por_conteo(
+    estado_modelo: EstadoPosicion, detectadas: int | None, esperadas: int
+) -> EstadoPosicion:
+    """Cuando el modelo sí contó piezas, el conteo manda sobre la etiqueta que
+    escribió: es común que reporte "vacio" en una posición donde él mismo contó
+    2 de 4 piezas (lo que en realidad es "parcial"). `surtido_incorrecto` es la
+    excepción — habla de la identidad del producto, no de cuántos hay, así que
+    no se puede derivar de un conteo."""
+    if estado_modelo == "surtido_incorrecto" or detectadas is None:
+        return estado_modelo
+    if detectadas <= 0:
+        return "vacio"
+    if detectadas < esperadas:
+        return "parcial"
+    if detectadas > esperadas:
+        return "sobrante"
+    return estado_modelo
 
-Planograma de la sección "{nombre}":
+
+_SYSTEM_PROMPT_TEMPLATE = """Auditor de anaquel (on-shelf availability) de autoservicio. \
+Compara la foto real contra el planograma y reporta solo las posiciones que NO estén \
+completas y correctas.
+
+Planograma "{nombre}" (formato `P<columna> <MARCA> <SKU> x<piezas esperadas>`):
 {posiciones}
 
-Para cada posición de la lista de arriba, revisa en la foto si el producto correcto está \
-presente en la cantidad esperada, y clasifica lo que encuentres en uno de tres estados — \
-no los mezcles, son causas distintas para el operador:
+Estados (son causas distintas, no los mezcles):
+- "vacio": 0 piezas, espacio físicamente vacío.
+- "parcial": el SKU correcto está, pero con MENOS piezas de las esperadas.
+- "sobrante": hay MÁS piezas de las esperadas (se come el espacio del vecino).
+- "surtido_incorrecto": hay producto, pero es un SKU distinto al que va ahí.
 
-- "vacio": el espacio está físicamente vacío, sin ningún producto.
-- "parcial": el producto/SKU correcto SÍ está, pero con menos piezas visibles que las \
-piezas esperadas indicadas en el planograma.
-- "surtido_incorrecto": el espacio tiene producto (no está vacío), pero es un producto/SKU \
-distinto al que debería ir ahí — no es un hueco físico, es un error de acomodo.
+Por cada posición reportada:
+- "piezas_detectadas": cuántas piezas cuentas realmente en la foto (0 si vacío).
+- "descripcion_visual": el envase en 3-6 palabras (color, formato, tamaño), ej. "bolsa \
+amarilla 1.3L", "garrafón azul 4.8L", "frasco blanco Baby". Casi todas las posiciones \
+repiten la misma marca, así que sin esto el operador no sabe a cuál te refieres. Descríbelo \
+por lo que ves; no inventes nombres que no puedas leer.
+- "nivel" (1 = charola inferior) y "columna_aproximada" (contando productos de izquierda a \
+derecha en ese nivel, desde 1), contados sobre la foto. "posicion_id" solo si lo identificas \
+con certeza; si no, null.
 
-Reporta solo las posiciones que no estén completas y correctas.
+Sé conservador: que un empaque te resulte difícil de reconocer NO significa que falte. \
+Verifica que ESA posición se vea vacía o con menos piezas que sus vecinas antes de \
+reportarla. Si el anaquel está completo, responde "huecos": [].
 
-Sé conservador: la lista de arriba es larga y algunos productos te van a resultar difíciles \
-de reconocer a simple vista (empaques parecidos, marcas poco comunes) — eso NO significa que \
-falten. Antes de agregar una posición a "huecos", verifica específicamente en la foto que ESA \
-posición se vea vacía o con menos piezas que sus vecinas del mismo nivel; no la reportes solo \
-porque no reconoces bien el producto o porque "en general" el anaquel se ve algo distinto al \
-planograma. Si la foto muestra el anaquel completo y bien surtido, la respuesta correcta es \
-"huecos": [] — no inventes faltantes para tener algo que reportar.
-
-Para ubicar cada hueco, CUENTA directamente sobre la foto en vez de intentar adivinar un id \
-de la lista: "nivel" es el número de charola contando de abajo hacia arriba (1 = charola \
-inferior), y "columna_aproximada" es la posición contando productos de izquierda a derecha \
-dentro de ese nivel, empezando en 1. Si además puedes identificar con certeza el id exacto \
-de la lista de arriba inclúyelo en "posicion_id"; si no estás seguro, déjalo como null — el \
-nivel/columna es el dato principal.
-
-Responde ÚNICAMENTE con un JSON con esta forma exacta, sin texto adicional:
+Responde ÚNICAMENTE este JSON:
 {{
-  "resumen": "una frase breve describiendo el estado general del anaquel",
-  "huecos": [
-    {{
-      "nivel": 1,
-      "columna_aproximada": 1,
-      "posicion_id": "id exacto si lo identificas con certeza, si no null",
-      "estado": "vacio, parcial o surtido_incorrecto",
-      "confianza": 0.0
-    }}
-  ]
+  "resumen": "2-3 frases: cuántas posiciones con problema, en qué niveles y qué patrón",
+  "huecos": [{{"nivel": 1, "columna_aproximada": 1, "posicion_id": null, \
+"descripcion_visual": "", "piezas_detectadas": 0, "estado": "vacio", "confianza": 0.0}}]
 }}
-
-No inventes ids que no estén en la lista del planograma. "confianza" es un número entre \
-0.0 y 1.0. Si todas las posiciones están completas, responde con "huecos": [].
 """
 
 
@@ -272,11 +278,22 @@ def _client() -> Groq:
 
 
 def _prompt_planograma(planograma: Planograma) -> str:
-    return "\n".join(
-        f"- id={p.id} | {p.posicion} | debería tener: {p.producto} (SKU {p.sku}), "
-        f"{p.facings_esperados} piezas visibles"
-        for p in planograma.posiciones
-    )
+    """Catálogo compacto, agrupado por nivel. Una línea por posición gastaba
+    ~95 caracteres repitiendo "Nivel 5, columna 1" cuando eso ya está implícito
+    en el id (N5-P1) y en el encabezado del nivel; en un tramo de 60 posiciones
+    eso era ~1500 tokens de puro relleno por llamada, contra un límite de
+    8000 TPM en Groq. Formato: `P<col> <MARCA> <SKU> x<piezas>`."""
+    por_nivel: dict[int | None, list[str]] = {}
+    for p in planograma.posiciones:
+        por_nivel.setdefault(p.nivel, []).append(
+            f"P{p.columna if p.columna is not None else '?'} {p.producto} "
+            f"{p.sku} x{p.facings_esperados}"
+        )
+    lineas = []
+    for nivel, items in sorted(por_nivel.items(), key=lambda kv: -(kv[0] or 0)):
+        encabezado = f"Nivel {nivel}" if nivel is not None else "Posiciones"
+        lineas.append(f"{encabezado}: " + " | ".join(items))
+    return "\n".join(lineas)
 
 
 _LADO_MAXIMO_IMAGEN = 1024
@@ -286,23 +303,55 @@ implemento -- las fotos llegaban tal cual las tomaba el celular (varios MP),
 y las imagenes de referencia estaticas (hasta 1.6MP) se mandaban completas en
 cada llamada. Con la cuota diaria de Groq esto se notaba rapido."""
 
+_LADO_MAXIMO_REFERENCIA = 800
+"""La lamina de planograma va como apoyo (para saber que envase corresponde a
+cada posicion), no como la imagen a auditar, asi que baja mas que la foto real
+para no comerse el limite de 8000 tokens por minuto. Como ademas se le recortan
+los margenes de la pagina, a 800px el anaquel se ve mas grande que antes a
+1024px con titulo, logos y regla incluidos."""
 
-def _redimensionar_para_modelo(image_bytes: bytes, content_type: str) -> tuple[bytes, str]:
-    """Reduce el lado mayor a _LADO_MAXIMO_IMAGEN y recomprime a JPEG antes de
+
+def _redimensionar_para_modelo(
+    image_bytes: bytes, content_type: str, lado_maximo: int = _LADO_MAXIMO_IMAGEN
+) -> tuple[bytes, str]:
+    """Reduce el lado mayor a `lado_maximo` y recomprime a JPEG antes de
     mandarla al modelo -- no afecta lo que se le muestra al operador (los
     endpoints de referencia siguen sirviendo el archivo original), solo lo que
     se manda a Groq."""
     imagen = Image.open(BytesIO(image_bytes))
     ancho, alto = imagen.size
-    if max(ancho, alto) <= _LADO_MAXIMO_IMAGEN:
+    if max(ancho, alto) <= lado_maximo:
         return image_bytes, content_type
-    factor = _LADO_MAXIMO_IMAGEN / max(ancho, alto)
+    factor = lado_maximo / max(ancho, alto)
     imagen = imagen.convert("RGB").resize(
         (round(ancho * factor), round(alto * factor)), Image.LANCZOS
     )
     buffer = BytesIO()
     imagen.save(buffer, format="JPEG", quality=85)
     return buffer.getvalue(), "image/jpeg"
+
+
+def _recortar_margenes(image_bytes: bytes) -> bytes:
+    """La lámina de planograma es una página carta completa: título, logos,
+    regla graduada y mucho margen blanco. Todo eso consume tokens de visión
+    igual que el anaquel pero no aporta nada a la comparación, y con el límite
+    de 8000 TPM de Groq pesa. Se recorta al bounding box de lo no-blanco, que
+    quita los márgenes sin depender de coordenadas fijas (si el recorte falla o
+    sale degenerado se devuelve la imagen tal cual)."""
+    try:
+        imagen = Image.open(BytesIO(image_bytes)).convert("RGB")
+        fondo = Image.new("RGB", imagen.size, (255, 255, 255))
+        caja = ImageChops.difference(imagen, fondo).getbbox()
+        if caja is None:
+            return image_bytes
+        ancho, alto = caja[2] - caja[0], caja[3] - caja[1]
+        if ancho < imagen.width * 0.2 or alto < imagen.height * 0.2:
+            return image_bytes
+        buffer = BytesIO()
+        imagen.crop(caja).save(buffer, format="JPEG", quality=85)
+        return buffer.getvalue()
+    except OSError:
+        return image_bytes
 
 
 def analizar_imagen(
@@ -314,13 +363,48 @@ def analizar_imagen(
         nombre=planograma.nombre, posiciones=_prompt_planograma(planograma)
     )
 
-    contenido_usuario = [
-        {
-            "type": "text",
-            "text": "Compara esta foto del anaquel contra el planograma y detecta los huecos.",
-        },
-        {"type": "image_url", "image_url": {"url": data_url}},
-    ]
+    # El catálogo en texto solo dice la MARCA de cada posición ("SUAVITEL"),
+    # que se repite decenas de veces en la misma charola: con eso el modelo no
+    # puede distinguir el frasco amarillo del blanco y termina reportando como
+    # vacías posiciones que sí están surtidas. Mandarle además la lámina
+    # fotorrealista del planograma le da el aspecto de cada posición, que es lo
+    # que le faltaba para comparar de verdad. El SKU/producto de la respuesta
+    # se sigue tomando del catálogo, no de la imagen — sin riesgo de alucinar.
+    referencia = (
+        cargar_imagen_referencia_seccion(planograma.seccion_id)
+        if settings.vision_enviar_referencia
+        else None
+    )
+    contenido_usuario: list[dict[str, Any]] = []
+    if referencia is not None:
+        ref_bytes, ref_tipo = _redimensionar_para_modelo(
+            _recortar_margenes(referencia), "image/jpeg", _LADO_MAXIMO_REFERENCIA
+        )
+        contenido_usuario += [
+            {
+                "type": "text",
+                "text": (
+                    "Imagen 1 de 2 — lámina del planograma: así DEBERÍA verse este anaquel. "
+                    "Úsala para saber qué envase corresponde a cada posición del catálogo."
+                ),
+            },
+            {"type": "image_url", "image_url": {"url": _data_url(ref_bytes, ref_tipo)}},
+            {
+                "type": "text",
+                "text": (
+                    "Imagen 2 de 2 — foto real del anaquel en tienda. Compárala contra la "
+                    "lámina y el catálogo, y detecta los huecos."
+                ),
+            },
+        ]
+    else:
+        contenido_usuario.append(
+            {
+                "type": "text",
+                "text": "Compara esta foto del anaquel contra el planograma y detecta los huecos.",
+            }
+        )
+    contenido_usuario.append({"type": "image_url", "image_url": {"url": data_url}})
 
     try:
         completion = _client().chat.completions.create(
@@ -374,14 +458,26 @@ def analizar_imagen(
                 planograma.seccion_id, h.get("nivel"), h.get("columna_aproximada"), h.get("posicion_id"),
             )
             continue
+        detectadas = h.get("piezas_detectadas")
+        detectadas = int(detectadas) if isinstance(detectadas, (int, float)) else None
+        if detectadas is not None:
+            detectadas = max(0, detectadas)
+        estado = _estado_por_conteo(
+            _normalizar_estado(h.get("estado")), detectadas, posicion.facings_esperados
+        )
         huecos.append(
             HuecoDetectado(
                 posicion_id=posicion.id,
                 posicion=posicion.posicion,
                 sku=posicion.sku,
                 producto=posicion.producto,
+                descripcion=str(h.get("descripcion_visual") or "").strip(),
                 facings_esperados=posicion.facings_esperados,
-                estado=_normalizar_estado(h.get("estado")),
+                piezas_detectadas=detectadas,
+                diferencia=(
+                    detectadas - posicion.facings_esperados if detectadas is not None else None
+                ),
+                estado=estado,
                 confianza=h.get("confianza", 0.5),
             )
         )
