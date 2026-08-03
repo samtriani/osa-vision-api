@@ -2,17 +2,24 @@
 `Planograma`/`PosicionPlanograma` que ya usa el modo catálogo
 (`vision_service.analizar_imagen`).
 
-Los PDF de planograma vienen en pares de página por "tile" (segmento
-horizontal del anaquel): una página fotorrealista (solo imagen, sin texto
-útil) y su par "esquemático" con el UPC + marca de cada posición como texto
-real embebido en el PDF — no hay que interpretar ninguna imagen con IA para
-esto, es dato de texto extraíble con PyMuPDF.
+Cada página "tile" del PDF (segmento horizontal del anaquel) es una
+composición vectorial: cada facing físico trae su propio rectángulo delgado
+(el marco de la celda, dibujado como trazo `re`) y el UPC/marca de cada
+posición es texto real embebido (extraíble con PyMuPDF, sin IA de por medio).
 
-Cada celda de producto en la página esquemática es un "bloque" de texto del
-PDF (`words[...][5]`, el índice de bloque); casi siempre trae la etiqueta
-completa (UPC + marca) en un solo bloque, pero cuando la columna es muy
-angosta el renderizador la parte en 2-3 bloques contiguos que hay que volver
-a unir (`_reparar_fragmentos`).
+La extracción NO se apoya en el "bloque" de texto que asigna PyMuPDF
+(`words[...][5]`): en columnas angostas con texto rotado 90° el propio PDF
+mete en un mismo bloque texto de dos niveles físicos distintos (se
+comprobó comparando contra el PDF de suavizantes 287-14-B-M1). En su lugar:
+
+1. Se toman las palabras individuales (con su rect propio) y se reconstruye
+   cada etiqueta UPC+marca encadenando fragmentos contiguos (mismo nivel,
+   separación menor a `GAP_MAX`) hasta completar 13 dígitos y absorber la
+   marca que sigue pegada — ver `_agrupar_en_etiquetas`.
+2. El número de facings de cada etiqueta NO se estima por ancho de texto
+   (ese heurístico fallaba: subestimaba/sobrestimaba según el ancho mínimo
+   observado en el nivel); se cuentan los rectángulos-facing reales que le
+   quedan más cerca — ver `_contar_facings`.
 
 Uso:
     python -m app.services.planograma_ingest <ruta.pdf> --niveles 6 --tiles 5,6,7,8
@@ -26,206 +33,203 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from collections import defaultdict
 from pathlib import Path
 
 import fitz
 
 UPC_RE = re.compile(r"\d{8,14}")
+GAP_MAX = 4.0  # separación máxima (pt) entre fragmentos para tratarlos como la misma etiqueta
+
+# El PDF a veces no repite el nombre completo de la marca en facings
+# consecutivos del mismo SKU (p.ej. sólo "HILLS" en vez de "GOLDEN HILLS" en
+# la 2a/3a repetición) — no es un fragmento que se pueda reconstruir por
+# geometría porque el texto completo simplemente no está en la página.
+_MARCA_TRUNCADA = {
+    "HILLS": "GOLDEN HILLS",
+}
 
 
-def _celdas_de_pagina(page: "fitz.Page") -> list[dict]:
-    """Reconstruye una celda por bloque de texto del PDF (aprox. una posición
-    de producto), con su texto concatenado y su caja delimitadora."""
-    words = page.get_text("words")  # (x0,y0,x1,y1,texto,bloque,linea,palabra)
-
-    blocks: dict[int, list] = defaultdict(list)
-    for w in words:
-        blocks[w[5]].append(w)
-
-    celdas = []
-    for ws in blocks.values():
-        ws.sort(key=lambda w: (w[6], w[7]))
-        texto = "".join(w[4] for w in ws)
-        x0 = min(w[0] for w in ws)
-        y0 = min(w[1] for w in ws)
-        x1 = max(w[2] for w in ws)
-        y1 = max(w[3] for w in ws)
-        celdas.append(
-            {
-                "texto": texto,
-                "x0": x0,
-                "y0": y0,
-                "x1": x1,
-                "y1": y1,
-                "xc": (x0 + x1) / 2,
-                "yc": (y0 + y1) / 2,
-            }
-        )
-    return celdas
+def _rect_gap(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
+    """Distancia entre dos rects (x0,y0,x1,y1); 0 si se tocan o se superponen."""
+    dx = max(0.0, max(a[0], b[0]) - min(a[2], b[2]))
+    dy = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
+    return max(dx, dy)
 
 
-def _tiene_upc(texto: str) -> bool:
-    m = UPC_RE.search(texto)
-    return bool(m) and len(m.group(0)) >= 10
+def _palabras_producto(page: "fitz.Page") -> list[tuple]:
+    """Palabras del área de producto, descartando la regla graduada de los
+    márgenes (izquierda/inferior) y el encabezado/pie de página — esos
+    dígitos sueltos (p.ej. dos números de la regla concatenados) cuelan
+    "SKU" falsos y descalibran el rango vertical usado para asignar nivel."""
+    return [w for w in page.get_text("words") if w[2] > 100 and w[1] < 490 and w[3] > 95]
 
 
-def _reparar_fragmentos(celdas: list[dict]) -> list[dict]:
-    """Cuando una columna es muy angosta, el UPC+marca de una sola posición
-    queda partido en 2-3 bloques contiguos (mismo carril vertical, sin UPC
-    completo en ninguno). Los fusiona con sus vecinos más cercanos hasta
-    que el texto combinado contenga un UPC completo, o hasta agotar
-    candidatos cercanos."""
-    pendientes = sorted(celdas, key=lambda c: (c["xc"], c["yc"]))
-    usados = [False] * len(pendientes)
-    resultado = []
-
-    for i, c in enumerate(pendientes):
-        if usados[i]:
+def _slots_de_facing(page: "fitz.Page") -> list["fitz.Rect"]:
+    """Cada facing dibujado en el planograma trae su propio rectángulo (el
+    marco de la celda); su ancho varía según el tamaño físico del envase
+    (de ~14pt para un frasco chico a ~43pt para un garrafón de 4.8L), pero
+    siempre son mucho más angostos/bajos que los separadores de nivel, los
+    divisores de módulo o el fondo blanco, así que se distinguen por tamaño."""
+    out = []
+    for d in page.get_drawings():
+        if d["type"] != "s":
             continue
-        if _tiene_upc(c["texto"]):
-            usados[i] = True
-            resultado.append(c)
+        r = d["rect"]
+        w, h = r.x1 - r.x0, r.y1 - r.y0
+        if 5 < w < 60 and 5 < h < 60 and r.x0 > 100 and r.y1 < 490 and r.y0 > 95:
+            out.append(r)
+    return out
+
+
+def _agrupar_en_etiquetas(palabras: list[dict]) -> list[dict]:
+    """Reconstruye cada etiqueta UPC+marca a partir de palabras individuales
+    de un mismo nivel, encadenando por proximidad geométrica en vez de por
+    bloque de PDF. Primero junta fragmentos de dígitos contiguos hasta
+    completar un UPC de 13 dígitos, luego junta la marca (letras, o dígitos
+    cortos tipo el "3" de "BOLD 3") que sigue pegada; se detiene apenas
+    aparece un fragmento que ya parece el UPC del siguiente producto."""
+    ws = sorted(palabras, key=lambda w: (w["r"][0], w["r"][1]))
+    i, n = 0, len(ws)
+    etiquetas = []
+    while i < n:
+        grupo = [ws[i]]
+        digitos = re.sub(r"\D", "", ws[i]["texto"])
+        j = i + 1
+        while (
+            len(digitos) < 13
+            and j < n
+            and _rect_gap(grupo[-1]["r"], ws[j]["r"]) <= GAP_MAX
+            and ws[j]["texto"].isdigit()
+        ):
+            grupo.append(ws[j])
+            digitos += ws[j]["texto"]
+            j += 1
+        while j < n and _rect_gap(grupo[-1]["r"], ws[j]["r"]) <= GAP_MAX:
+            cand = ws[j]["texto"]
+            if cand.isdigit() and len(cand) >= 8:
+                break  # ya empezó el UPC del siguiente producto
+            grupo.append(ws[j])
+            j += 1
+        # Los fragmentos de UN MISMO número van pegados sin espacio (para que
+        # el regex del UPC los vea como una sola corrida de dígitos); entre
+        # cualquier otro par de palabras (marca de 2 palabras tipo "GOLDEN
+        # HILLS", o dígito-corto-pegado-a-marca tipo "BOLD 3") sí va espacio.
+        texto = grupo[0]["texto"]
+        for prev, cur in zip(grupo, grupo[1:]):
+            if not (prev["texto"].isdigit() and cur["texto"].isdigit()):
+                texto += " "
+            texto += cur["texto"]
+        m = UPC_RE.search(texto)
+        if m:
+            xs = [g["r"][0] for g in grupo] + [g["r"][2] for g in grupo]
+            resto = (texto[: m.start()] + texto[m.end() :]).strip()
+            producto = _MARCA_TRUNCADA.get(resto, resto) or "(sin marca)"
+            etiquetas.append({"sku": m.group(0), "producto": producto, "x0": min(xs), "x1": max(xs)})
+        i = j
+    return etiquetas
+
+
+def _contar_facings(etiquetas: list[dict], slots: list["fitz.Rect"]) -> dict[int, int]:
+    """A cada facing dibujado se le asigna la etiqueta cuyo texto tiene más
+    cerca (distancia 0 si el centro del facing cae dentro del propio
+    bounding box del texto). Es más confiable que repartir por ancho
+    estimado: el centro de un facing en el extremo de una etiqueta ancha
+    puede caer numéricamente más cerca del centroide de la etiqueta VECINA
+    que del propio, así que se compara contra el rango [x0,x1] completo de
+    cada etiqueta, no contra su centro."""
+    conteo: dict[int, int] = {}
+
+    def distancia(e: dict, xc: float) -> float:
+        if e["x0"] <= xc <= e["x1"]:
+            return 0.0
+        return min(abs(xc - e["x0"]), abs(xc - e["x1"]))
+
+    for s in sorted(slots, key=lambda r: r.x0):
+        if not etiquetas:
             continue
-
-        grupo = [c]
-        usados[i] = True
-        texto_grupo = c["texto"]
-        for j in range(i + 1, len(pendientes)):
-            if usados[j] or _tiene_upc(texto_grupo):
-                continue
-            cj = pendientes[j]
-            # candidato a fragmento hermano: mismo carril angosto (x cercana),
-            # verticalmente adyacente (una franja de shelf, no un salto de nivel)
-            if abs(cj["xc"] - c["xc"]) <= 6.0 and abs(cj["yc"] - c["yc"]) <= 20.0:
-                grupo.append(cj)
-                usados[j] = True
-                texto_grupo += cj["texto"]
-
-        x0 = min(g["x0"] for g in grupo)
-        y0 = min(g["y0"] for g in grupo)
-        x1 = max(g["x1"] for g in grupo)
-        y1 = max(g["y1"] for g in grupo)
-        resultado.append(
-            {
-                "texto": texto_grupo,
-                "x0": x0,
-                "y0": y0,
-                "x1": x1,
-                "y1": y1,
-                "xc": (x0 + x1) / 2,
-                "yc": (y0 + y1) / 2,
-            }
-        )
-    return resultado
-
-
-def _asignar_nivel(yc: float, y_top: float, y_bottom: float, num_niveles: int) -> int:
-    """Convierte la coordenada vertical de una celda a un número de nivel
-    (1 = charola inferior, num_niveles = charola superior), dividiendo el
-    rango vertical observado del anaquel en `num_niveles` franjas iguales.
-    """
-    alto_nivel = (y_bottom - y_top) / num_niveles
-    indice_desde_arriba = int((yc - y_top) // alto_nivel)
-    nivel = num_niveles - indice_desde_arriba
-    return max(1, min(num_niveles, nivel))
-
-
-def _extraer_celdas_tile(page: "fitz.Page") -> list[dict]:
-    """Celdas con UPC/marca ya separados para un tile, SIN nivel asignado
-    todavía — el nivel se calcula después, con el rango vertical de TODOS los
-    tiles juntos (ver construir_planograma). Calibrar cada tile por separado
-    fue el bug original: cada página tiene su propia densidad de texto, así
-    que su rango vertical detectado variaba tile a tile aunque los 4 sean
-    cortes horizontales del mismo anaquel físico — terminaba llamando "nivel
-    7" a alturas distintas según el tile.
-    """
-    celdas = _celdas_de_pagina(page)
-    celdas = _reparar_fragmentos(celdas)
-    celdas = [c for c in celdas if _tiene_upc(c["texto"])]
-
-    resultado = []
-    for c in celdas:
-        m = UPC_RE.search(c["texto"])
-        upc = m.group(0)
-        resto = (c["texto"][: m.start()] + c["texto"][m.end() :]).strip()
-        resultado.append(
-            {
-                "yc": c["yc"],
-                "y0": c["y0"],
-                "y1": c["y1"],
-                "x0": c["x0"],
-                "x1": c["x1"],
-                "sku": upc,
-                "marca": resto or "(sin marca)",
-            }
-        )
-    return resultado
-
-
-def _ancho_unidad_por_nivel(posiciones: list[dict]) -> dict[int, float]:
-    """Estima el ancho de "una sola posición" en cada nivel usando el ancho
-    mínimo observado en ese nivel — las corridas de facings repetidos del
-    mismo SKU vienen fusionadas en una sola celda ancha, así que dividir su
-    ancho entre este valor aproxima cuántos facings representa.
-    """
-    anchos: dict[int, list[float]] = defaultdict(list)
-    for p in posiciones:
-        anchos[p["nivel"]].append(p["x1"] - p["x0"])
-    return {nivel: min(ws) for nivel, ws in anchos.items()}
+        xc = (s.x0 + s.x1) / 2
+        idx = min(range(len(etiquetas)), key=lambda i: distancia(etiquetas[i], xc))
+        conteo[idx] = conteo.get(idx, 0) + 1
+    return conteo
 
 
 def construir_planograma(
     pdf_path: Path, seccion_id: str, nombre: str, tiles: list[int], num_niveles: int
 ) -> dict:
     doc = fitz.open(pdf_path)
-    crudas: list[dict] = []
-    offset_x = 0.0
-    for pagina_idx in tiles:
-        page = doc[pagina_idx - 1]
-        celdas = _extraer_celdas_tile(page)
-        for c in celdas:
-            c["x0"] += offset_x
-            c["x1"] += offset_x
-        crudas.extend(celdas)
-        offset_x += page.rect.width  # tiles consecutivos, no se solapan
-    doc.close()
 
-    if not crudas:
+    # Calibración de niveles compartida entre TODOS los tiles de esta corrida:
+    # calibrar cada tile por separado hace que "nivel 5" caiga en una altura
+    # distinta si un tile tiene menos contenido cerca del borde que otro,
+    # aunque los tiles sean cortes horizontales del mismo anaquel físico.
+    palabras_por_tile: dict[int, list[dict]] = {}
+    todas: list[dict] = []
+    for idx in tiles:
+        page = doc[idx - 1]
+        pw = [{"r": (w[0], w[1], w[2], w[3]), "texto": w[4]} for w in _palabras_producto(page)]
+        palabras_por_tile[idx] = pw
+        todas.extend(pw)
+
+    if not todas:
+        doc.close()
         return {"seccion_id": seccion_id, "nombre": nombre, "posiciones": []}
 
-    # Rango vertical calibrado con TODOS los tiles juntos — así "nivel 7"
-    # significa la misma charola física sin importar de qué tile venga.
-    y_top = min(c["y0"] for c in crudas)
-    y_bottom = max(c["y1"] for c in crudas)
-    for c in crudas:
-        c["nivel"] = _asignar_nivel(c["yc"], y_top, y_bottom, num_niveles)
+    y_top = min(p["r"][1] for p in todas)
+    y_bottom = max(p["r"][3] for p in todas)
+    alto_nivel = (y_bottom - y_top) / num_niveles
 
-    ancho_unidad = _ancho_unidad_por_nivel(crudas)
+    def nivel_de(yc: float) -> int:
+        indice_desde_arriba = int((yc - y_top) // alto_nivel)
+        return max(1, min(num_niveles, num_niveles - indice_desde_arriba))
 
-    # ordenar por nivel (de mayor a menor, como se lee un anaquel) y luego x
-    crudas.sort(key=lambda p: (-p["nivel"], p["x0"]))
+    posiciones_por_nivel: dict[int, list[dict]] = {n: [] for n in range(1, num_niveles + 1)}
+    offset_x = 0.0
+    for idx in tiles:
+        page = doc[idx - 1]
+        pw = palabras_por_tile[idx]
+        slots = _slots_de_facing(page)
+
+        por_nivel_palabras: dict[int, list[dict]] = {}
+        for p in pw:
+            yc = (p["r"][1] + p["r"][3]) / 2
+            por_nivel_palabras.setdefault(nivel_de(yc), []).append(p)
+        por_nivel_slots: dict[int, list] = {}
+        for s in slots:
+            yc = (s.y0 + s.y1) / 2
+            por_nivel_slots.setdefault(nivel_de(yc), []).append(s)
+
+        for nivel in range(1, num_niveles + 1):
+            etiquetas = _agrupar_en_etiquetas(por_nivel_palabras.get(nivel, []))
+            etiquetas.sort(key=lambda e: e["x0"])
+            conteo = _contar_facings(etiquetas, por_nivel_slots.get(nivel, []))
+            for i, e in enumerate(etiquetas):
+                posiciones_por_nivel[nivel].append(
+                    {
+                        "sku": e["sku"],
+                        "producto": e["producto"],
+                        "facings_esperados": conteo.get(i, 1),
+                        "x_global": e["x0"] + offset_x,
+                    }
+                )
+        offset_x += page.rect.width
+
+    doc.close()
 
     posiciones_finales = []
-    contador_por_nivel: dict[int, int] = defaultdict(int)
-    for p in crudas:
-        contador_por_nivel[p["nivel"]] += 1
-        col = contador_por_nivel[p["nivel"]]
-        ancho = p["x1"] - p["x0"]
-        unidad = ancho_unidad.get(p["nivel"], ancho) or ancho
-        facings = max(1, round(ancho / unidad)) if unidad else 1
-        posiciones_finales.append(
-            {
-                "id": f"N{p['nivel']}-P{col}",
-                "posicion": f"Nivel {p['nivel']}, columna {col}",
-                "sku": p["sku"],
-                "producto": p["marca"],
-                "facings_esperados": facings,
-                "nivel": p["nivel"],
-                "columna": col,
-            }
-        )
-
+    for nivel in range(num_niveles, 0, -1):
+        fila = sorted(posiciones_por_nivel[nivel], key=lambda p: p["x_global"])
+        for col, p in enumerate(fila, start=1):
+            posiciones_finales.append(
+                {
+                    "id": f"N{nivel}-P{col}",
+                    "posicion": f"Nivel {nivel}, columna {col}",
+                    "sku": p["sku"],
+                    "producto": p["producto"],
+                    "facings_esperados": p["facings_esperados"],
+                    "nivel": nivel,
+                    "columna": col,
+                }
+            )
     return {"seccion_id": seccion_id, "nombre": nombre, "posiciones": posiciones_finales}
 
 

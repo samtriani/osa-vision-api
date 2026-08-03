@@ -7,7 +7,7 @@
       "posicion": "Nivel 5, columna 1",
       "sku": "7501025409128",
       "producto": "ENSUEÑO",
-      "facings_esperados": 5,
+      "facings_esperados": 4,
       "nivel": 5,
       "columna": 1
     },
@@ -16,50 +16,50 @@
       "posicion": "Nivel 5, columna 2",
       "sku": "0030772095713",
       "producto": "DOWNY",
-      "facings_esperados": 9,
+      "facings_esperados": 7,
       "nivel": 5,
       "columna": 2
     },
     {
       "id": "N5-P3",
       "posicion": "Nivel 5, columna 3",
-      "sku": "7500435126014",
-      "producto": "DOWNY7500435126014DOWNY",
-      "facings_esperados": 2,
+      "sku": "7502319270011",
+      "producto": "KUXTAL",
+      "facings_esperados": 1,
       "nivel": 5,
       "columna": 3
     },
     {
       "id": "N5-P4",
       "posicion": "Nivel 5, columna 4",
-      "sku": "7500435252133",
+      "sku": "7500435126045",
       "producto": "DOWNY",
-      "facings_esperados": 6,
+      "facings_esperados": 1,
       "nivel": 5,
       "columna": 4
     },
     {
       "id": "N5-P5",
       "posicion": "Nivel 5, columna 5",
-      "sku": "7500435252164",
+      "sku": "7500435126014",
       "producto": "DOWNY",
-      "facings_esperados": 3,
+      "facings_esperados": 1,
       "nivel": 5,
       "columna": 5
     },
     {
       "id": "N5-P6",
       "posicion": "Nivel 5, columna 6",
-      "sku": "7500435126106",
+      "sku": "7500435125987",
       "producto": "DOWNY",
-      "facings_esperados": 6,
+      "facings_esperados": 1,
       "nivel": 5,
       "columna": 6
     },
     {
       "id": "N5-P7",
       "posicion": "Nivel 5, columna 7",
-      "sku": "7500435196260",
+      "sku": "7500435252133",
       "producto": "DOWNY",
       "facings_esperados": 3,
       "nivel": 5,
@@ -68,17 +68,17 @@
     {
       "id": "N5-P8",
       "posicion": "Nivel 5, columna 8",
-      "sku": "7500435252157",
+      "sku": "7500435252164",
       "producto": "DOWNY",
-      "facings_esperados": 3,
+      "facings_esperados": 2,
       "nivel": 5,
       "columna": 8
     },
     {
       "id": "N5-P9",
       "posicion": "Nivel 5, columna 9",
-      "sku": "7509546032887",
-      "producto": "SUAVITEL",
+      "sku": "7500435126106",
+      "producto": "DOWNY",
       "facings_esperados": 3,
       "nivel": 5,
       "columna": 9
@@ -86,27 +86,72 @@
     {
       "id": "N5-P10",
       "posicion": "Nivel 5, columna 10",
-      "sku": "7509546072104",
-      "producto": "SUAVITEL7509546072081SUAVITEL7509546680118SUAVITEL",
-      "facings_esperados": 5,
+      "sku": "7500435196260",
+      "producto": "DOWNY",
+      "facings_esperados": 2,
       "nivel": 5,
       "columna": 10
     },
     {
       "id": "N5-P11",
       "posicion": "Nivel 5, columna 11",
-      "sku": "7509546680163",
-      "producto": "SUAVITEL",
-      "facings_esperados": 3,
+      "sku": "7500435252157",
+      "producto": "DOWNY",
+      "facings_esperados": 2,
       "nivel": 5,
       "columna": 11
+    },
+    {
+      "id": "N5-P12",
+      "posicion": "Nivel 5, columna 12",
+      "sku": "7509546032887",
+      "producto": "SUAVITEL",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 12
+    },
+    {
+      "id": "N5-P13",
+      "posicion": "Nivel 5, columna 13",
+      "sku": "7509546072104",
+      "producto": "SUAVITEL",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 13
+    },
+    {
+      "id": "N5-P14",
+      "posicion": "Nivel 5, columna 14",
+      "sku": "7509546680118",
+      "producto": "SUAVITEL",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 14
+    },
+    {
+      "id": "N5-P15",
+      "posicion": "Nivel 5, columna 15",
+      "sku": "7509546680163",
+      "producto": "SUAVITEL",
+      "facings_esperados": 2,
+      "nivel": 5,
+      "columna": 15
+    },
+    {
+      "id": "N5-P16",
+      "posicion": "Nivel 5, columna 16",
+      "sku": "7509546680156",
+      "producto": "SUAVITEL",
+      "facings_esperados": 1,
+      "nivel": 5,
+      "columna": 16
     },
     {
       "id": "N4-P1",
       "posicion": "Nivel 4, columna 1",
       "sku": "7509546702292",
       "producto": "SUAVITEL",
-      "facings_esperados": 4,
+      "facings_esperados": 5,
       "nivel": 4,
       "columna": 1
     },
@@ -131,72 +176,72 @@
     {
       "id": "N4-P4",
       "posicion": "Nivel 4, columna 4",
-      "sku": "7500435125987",
-      "producto": "DOWNY7500435125987DOWNY7500435175746DOWNY",
-      "facings_esperados": 2,
+      "sku": "7502319270011",
+      "producto": "KUXTAL",
+      "facings_esperados": 1,
       "nivel": 4,
       "columna": 4
     },
     {
       "id": "N4-P5",
       "posicion": "Nivel 4, columna 5",
-      "sku": "7500435126113",
+      "sku": "7500435126045",
       "producto": "DOWNY",
-      "facings_esperados": 4,
+      "facings_esperados": 1,
       "nivel": 4,
       "columna": 5
     },
     {
       "id": "N4-P6",
       "posicion": "Nivel 4, columna 6",
-      "sku": "7500435252089",
+      "sku": "7500435126014",
       "producto": "DOWNY",
-      "facings_esperados": 4,
+      "facings_esperados": 1,
       "nivel": 4,
       "columna": 6
     },
     {
       "id": "N4-P7",
       "posicion": "Nivel 4, columna 7",
-      "sku": "7500435196253",
+      "sku": "7500435125987",
       "producto": "DOWNY",
-      "facings_esperados": 2,
+      "facings_esperados": 1,
       "nivel": 4,
       "columna": 7
     },
     {
       "id": "N4-P8",
       "posicion": "Nivel 4, columna 8",
-      "sku": "7500435126151",
+      "sku": "7500435126113",
       "producto": "DOWNY",
-      "facings_esperados": 4,
+      "facings_esperados": 3,
       "nivel": 4,
       "columna": 8
     },
     {
       "id": "N4-P9",
       "posicion": "Nivel 4, columna 9",
-      "sku": "7500435160995",
+      "sku": "7500435196253",
       "producto": "DOWNY",
-      "facings_esperados": 4,
+      "facings_esperados": 2,
       "nivel": 4,
       "columna": 9
     },
     {
       "id": "N4-P10",
       "posicion": "Nivel 4, columna 10",
-      "sku": "7500435196291",
+      "sku": "7500435160995",
       "producto": "DOWNY",
-      "facings_esperados": 2,
+      "facings_esperados": 3,
       "nivel": 4,
       "columna": 10
     },
     {
       "id": "N4-P11",
       "posicion": "Nivel 4, columna 11",
-      "sku": "7500435139182",
+      "sku": "7500435196291",
       "producto": "DOWNY",
-      "facings_esperados": 4,
+      "facings_esperados": 2,
       "nivel": 4,
       "columna": 11
     },
@@ -212,27 +257,27 @@
     {
       "id": "N4-P13",
       "posicion": "Nivel 4, columna 13",
-      "sku": "7509546032887",
-      "producto": "SUAVITEL",
-      "facings_esperados": 2,
+      "sku": "7500435261388",
+      "producto": "DOWNY",
+      "facings_esperados": 1,
       "nivel": 4,
       "columna": 13
     },
     {
       "id": "N4-P14",
       "posicion": "Nivel 4, columna 14",
-      "sku": "7509546693330",
+      "sku": "7509546032887",
       "producto": "SUAVITEL",
-      "facings_esperados": 4,
+      "facings_esperados": 2,
       "nivel": 4,
       "columna": 14
     },
     {
       "id": "N4-P15",
       "posicion": "Nivel 4, columna 15",
-      "sku": "7509546080697",
+      "sku": "7509546072081",
       "producto": "SUAVITEL",
-      "facings_esperados": 4,
+      "facings_esperados": 2,
       "nivel": 4,
       "columna": 15
     },
@@ -241,7 +286,7 @@
       "posicion": "Nivel 4, columna 16",
       "sku": "7509546680132",
       "producto": "SUAVITEL",
-      "facings_esperados": 3,
+      "facings_esperados": 4,
       "nivel": 4,
       "columna": 16
     },
@@ -250,23 +295,23 @@
       "posicion": "Nivel 3, columna 1",
       "sku": "0035000391971",
       "producto": "SUAVITEL",
-      "facings_esperados": 3,
+      "facings_esperados": 4,
       "nivel": 3,
       "columna": 1
     },
     {
       "id": "N3-P2",
       "posicion": "Nivel 3, columna 2",
-      "sku": "0037000801689",
-      "producto": "BOUNCE",
-      "facings_esperados": 3,
+      "sku": "0030772097953",
+      "producto": "DOWNY",
+      "facings_esperados": 4,
       "nivel": 3,
       "columna": 2
     },
     {
       "id": "N3-P3",
       "posicion": "Nivel 3, columna 3",
-      "sku": "0030772097953",
+      "sku": "0030772090947",
       "producto": "DOWNY",
       "facings_esperados": 3,
       "nivel": 3,
@@ -275,43 +320,43 @@
     {
       "id": "N3-P4",
       "posicion": "Nivel 3, columna 4",
-      "sku": "0030772108673",
-      "producto": "DOWNY",
-      "facings_esperados": 5,
+      "sku": "7503025939292",
+      "producto": "KUXTAL",
+      "facings_esperados": 1,
       "nivel": 3,
       "columna": 4
     },
     {
       "id": "N3-P5",
       "posicion": "Nivel 3, columna 5",
-      "sku": "0030772090947",
+      "sku": "7500435175760",
       "producto": "DOWNY",
-      "facings_esperados": 3,
+      "facings_esperados": 1,
       "nivel": 3,
       "columna": 5
     },
     {
       "id": "N3-P6",
       "posicion": "Nivel 3, columna 6",
-      "sku": "7502319270011",
-      "producto": "KUXTAL7502319270011KUXTAL7503025939292KUXTAL7500435126045DOWNY7500435126045DOWNY7500435175760DOWNY",
-      "facings_esperados": 3,
+      "sku": "7500435175746",
+      "producto": "DOWNY",
+      "facings_esperados": 1,
       "nivel": 3,
       "columna": 6
     },
     {
       "id": "N3-P7",
       "posicion": "Nivel 3, columna 7",
-      "sku": "7503025939292",
-      "producto": "KUXTAL7503025939292KUXTAL",
-      "facings_esperados": 1,
+      "sku": "7500435252089",
+      "producto": "DOWNY",
+      "facings_esperados": 2,
       "nivel": 3,
       "columna": 7
     },
     {
       "id": "N3-P8",
       "posicion": "Nivel 3, columna 8",
-      "sku": "7500435175692",
+      "sku": "7500435126151",
       "producto": "DOWNY",
       "facings_esperados": 3,
       "nivel": 3,
@@ -320,137 +365,209 @@
     {
       "id": "N3-P9",
       "posicion": "Nivel 3, columna 9",
-      "sku": "7500435126144",
+      "sku": "7500435139182",
       "producto": "DOWNY",
-      "facings_esperados": 3,
+      "facings_esperados": 2,
       "nivel": 3,
       "columna": 9
     },
     {
       "id": "N3-P10",
       "posicion": "Nivel 3, columna 10",
-      "sku": "7500435160872",
-      "producto": "DOWNY",
-      "facings_esperados": 3,
+      "sku": "7509546693330",
+      "producto": "SUAVITEL",
+      "facings_esperados": 2,
       "nivel": 3,
       "columna": 10
     },
     {
       "id": "N3-P11",
       "posicion": "Nivel 3, columna 11",
-      "sku": "7500435261333",
-      "producto": "DOWNY7500435261388DOWNY7500435261326DOWNY",
-      "facings_esperados": 2,
-      "nivel": 3,
-      "columna": 11
-    },
-    {
-      "id": "N3-P12",
-      "posicion": "Nivel 3, columna 12",
-      "sku": "7509546062396",
-      "producto": "SUAVITEL",
-      "facings_esperados": 3,
-      "nivel": 3,
-      "columna": 12
-    },
-    {
-      "id": "N3-P13",
-      "posicion": "Nivel 3, columna 13",
       "sku": "7509546080697",
       "producto": "SUAVITEL",
       "facings_esperados": 3,
       "nivel": 3,
-      "columna": 13
+      "columna": 11
     },
     {
       "id": "N2-P1",
       "posicion": "Nivel 2, columna 1",
       "sku": "0037000801689",
       "producto": "BOUNCE",
-      "facings_esperados": 2,
+      "facings_esperados": 4,
       "nivel": 2,
       "columna": 1
     },
     {
       "id": "N2-P2",
       "posicion": "Nivel 2, columna 2",
-      "sku": "0030772095720",
+      "sku": "0030772108673",
       "producto": "DOWNY",
-      "facings_esperados": 2,
+      "facings_esperados": 7,
       "nivel": 2,
       "columna": 2
     },
     {
       "id": "N2-P3",
       "posicion": "Nivel 2, columna 3",
-      "sku": "0030772087343",
-      "producto": "DOWNY",
-      "facings_esperados": 2,
+      "sku": "7503025939292",
+      "producto": "KUXTAL",
+      "facings_esperados": 1,
       "nivel": 2,
       "columna": 3
     },
     {
       "id": "N2-P4",
       "posicion": "Nivel 2, columna 4",
-      "sku": "7500435180078",
+      "sku": "7500435175692",
       "producto": "DOWNY",
-      "facings_esperados": 1,
+      "facings_esperados": 2,
       "nivel": 2,
       "columna": 4
     },
     {
       "id": "N2-P5",
       "posicion": "Nivel 2, columna 5",
-      "sku": "7500435256865",
+      "sku": "7500435126144",
       "producto": "DOWNY",
-      "facings_esperados": 1,
+      "facings_esperados": 3,
       "nivel": 2,
       "columna": 5
     },
     {
       "id": "N2-P6",
       "posicion": "Nivel 2, columna 6",
-      "sku": "7500435184465",
+      "sku": "7500435160872",
       "producto": "DOWNY",
-      "facings_esperados": 2,
+      "facings_esperados": 3,
       "nivel": 2,
       "columna": 6
     },
     {
       "id": "N2-P7",
       "posicion": "Nivel 2, columna 7",
-      "sku": "7500435160865",
+      "sku": "7500435261333",
       "producto": "DOWNY",
-      "facings_esperados": 2,
+      "facings_esperados": 1,
       "nivel": 2,
       "columna": 7
     },
     {
       "id": "N2-P8",
       "posicion": "Nivel 2, columna 8",
-      "sku": "7509546678696",
+      "sku": "7509546062396",
       "producto": "SUAVITEL",
-      "facings_esperados": 1,
+      "facings_esperados": 2,
       "nivel": 2,
       "columna": 8
     },
     {
       "id": "N2-P9",
       "posicion": "Nivel 2, columna 9",
-      "sku": "7509546684109",
-      "producto": "(sin marca)",
-      "facings_esperados": 2,
+      "sku": "7509546080697",
+      "producto": "SUAVITEL",
+      "facings_esperados": 3,
       "nivel": 2,
       "columna": 9
     },
     {
       "id": "N1-P1",
       "posicion": "Nivel 1, columna 1",
-      "sku": "10203040506070",
-      "producto": "20100m80901m1020304050607080902m1020304050607080903m1020304050607080",
-      "facings_esperados": 1,
+      "sku": "0037000801689",
+      "producto": "BOUNCE",
+      "facings_esperados": 4,
       "nivel": 1,
       "columna": 1
+    },
+    {
+      "id": "N1-P2",
+      "posicion": "Nivel 1, columna 2",
+      "sku": "0030772095720",
+      "producto": "DOWNY",
+      "facings_esperados": 3,
+      "nivel": 1,
+      "columna": 2
+    },
+    {
+      "id": "N1-P3",
+      "posicion": "Nivel 1, columna 3",
+      "sku": "0030772087343",
+      "producto": "DOWNY",
+      "facings_esperados": 4,
+      "nivel": 1,
+      "columna": 3
+    },
+    {
+      "id": "N1-P4",
+      "posicion": "Nivel 1, columna 4",
+      "sku": "7503025939292",
+      "producto": "KUXTAL",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 4
+    },
+    {
+      "id": "N1-P5",
+      "posicion": "Nivel 1, columna 5",
+      "sku": "7500435180078",
+      "producto": "DOWNY",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 5
+    },
+    {
+      "id": "N1-P6",
+      "posicion": "Nivel 1, columna 6",
+      "sku": "7500435256865",
+      "producto": "DOWNY",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 6
+    },
+    {
+      "id": "N1-P7",
+      "posicion": "Nivel 1, columna 7",
+      "sku": "7500435184465",
+      "producto": "DOWNY",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 7
+    },
+    {
+      "id": "N1-P8",
+      "posicion": "Nivel 1, columna 8",
+      "sku": "7500435160865",
+      "producto": "DOWNY",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 8
+    },
+    {
+      "id": "N1-P9",
+      "posicion": "Nivel 1, columna 9",
+      "sku": "7500435261326",
+      "producto": "DOWNY",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 9
+    },
+    {
+      "id": "N1-P10",
+      "posicion": "Nivel 1, columna 10",
+      "sku": "7509546678696",
+      "producto": "SUAVITEL",
+      "facings_esperados": 1,
+      "nivel": 1,
+      "columna": 10
+    },
+    {
+      "id": "N1-P11",
+      "posicion": "Nivel 1, columna 11",
+      "sku": "7509546684109",
+      "producto": "(sin marca)",
+      "facings_esperados": 2,
+      "nivel": 1,
+      "columna": 11
     }
   ]
 }
